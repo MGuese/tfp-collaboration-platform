@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" version="26.2.6">
+  <diagram name="Seite-1" id="l0WvUJElL2ecB1N14b2X">
+    <mxGraphModel dx="1148" dy="693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_Efm3URx336y0hWJy-us-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-2" target="_Efm3URx336y0hWJy-us-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-2" value="" style="ellipse;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="334.51" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-4" target="_Efm3URx336y0hWJy-us-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-4" value="UC: Galerie öffnen" style="" vertex="1" parent="1">
+          <mxGeometry x="294.51" y="110" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-5" value="Fotos bewerten" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=106;height=30;" vertex="1" parent="1">
+          <mxGeometry x="130" y="50" width="320" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-13" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#ff0000" vertex="1" parent="1">
+          <mxGeometry x="40" y="118.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-15" target="_Efm3URx336y0hWJy-us-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-15" value="Abbrechen" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="110" width="110" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-17" target="_Efm3URx336y0hWJy-us-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-17" value="Man kann jederzeit die Aktivität abbrechen" style="shape=note;whiteSpace=wrap;size=17" vertex="1" parent="1">
+          <mxGeometry x="165" y="185.5" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-19" target="_Efm3URx336y0hWJy-us-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-19" value="UC: Fotos auswählen" style="" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-24" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#ff0000" vertex="1" parent="1">
+          <mxGeometry x="334.51" y="360" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-37" target="_Efm3URx336y0hWJy-us-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-37" value="Bewertung setzen&#xa;(0-5 Sterne)" style="" vertex="1" parent="1">
+          <mxGeometry x="279.51" y="280" width="140" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

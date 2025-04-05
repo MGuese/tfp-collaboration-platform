@@ -1,0 +1,42 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" version="26.2.6">
+  <diagram name="Seite-1" id="l0WvUJElL2ecB1N14b2X">
+    <mxGraphModel dx="950" dy="-252" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_Efm3URx336y0hWJy-us-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-59" target="_Efm3URx336y0hWJy-us-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-59" value="" style="ellipse;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="160" y="869" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-61" target="_Efm3URx336y0hWJy-us-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-61" value="UC: Fotos &#xa;auswählen" style="" vertex="1" parent="1">
+          <mxGeometry x="119.99999999999999" y="1000" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-64" value="" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#ff0000" vertex="1" parent="1">
+          <mxGeometry x="160" y="1140" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-65" value="Fotos aus Papierkorb löschen" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=120;height=31;" vertex="1" parent="1">
+          <mxGeometry x="40" y="859" width="230" height="321" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-74" target="_Efm3URx336y0hWJy-us-64">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="174.99500000000012" y="1099" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-74" value="Fotos endgültig &#xa;löschen" style="" vertex="1" parent="1">
+          <mxGeometry x="119.99999999999999" y="1070" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_Efm3URx336y0hWJy-us-75" target="_Efm3URx336y0hWJy-us-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_Efm3URx336y0hWJy-us-75" value="UC: Papierkorb &#xa;öffnen" style="" vertex="1" parent="1">
+          <mxGeometry x="120" y="920" width="110" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -6,11 +6,13 @@
 
     <button class="select-btn" (click)="imageUploadInput.click()">Select Images</button>
 
+  <div class="selectedImageContainer">
     @for (image of selectedFiles; track image.name) {
-  <li>{{ image.name }}<button (click)="removeImage(image.name)">x</button></li>
+  <li>{{ image.name }}<button class="removeImageBtn" (click)="removeImage(image.name)">remove</button></li>
     } @empty {
     <p>No files selected yet.</p>
     }
+  </div>
 
     <button class="upload-btn" (click)="submitImages()">Upload</button>
 

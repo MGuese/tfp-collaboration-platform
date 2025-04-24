@@ -1,0 +1,15 @@
+.landing-page-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  padding-top: 3rem;
+}
+
+.uploadImageButton {
+  background-color: var(--accent-01);
+}

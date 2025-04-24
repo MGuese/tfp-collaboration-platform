@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-top: 3rem;
 }
 
 .image-input {
@@ -16,5 +17,19 @@
 }
 
 .upload-btn {
-  background-color: var(--accent-02);
+  background-color: var(--accent-01);
+}
+
+.removeImageBtn {
+  padding: 0.25rem 0.5rem;
+  margin-left: 1em;
+}
+
+.selectedImageContainer {
+  border-color: var(--accent-01);
+  border-style: solid;
+  border-radius: 1rem;
+  border-width: 1px;
+  padding: 1rem;
+  margin: 1rem;
 }

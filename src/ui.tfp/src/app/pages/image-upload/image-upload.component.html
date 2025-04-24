@@ -1,0 +1,14 @@
+<h1>Upload your images</h1>
+<input type="file" class="image-input" (change)="onFileSelected($event)" multiple #imageUploadInput>
+
+<div class="image-upload">
+  @for (image of selectedFiles; track image.name) {
+  <li>{{ image.name }}</li>
+  } @empty {
+  <p>No files selected yet.</p>
+  }
+
+  <button class="select-btn" (click)="imageUploadInput.click()">Select Images</button>
+  <button class="upload-btn" (click)="submitImages()">Upload Images</button>
+
+</div>

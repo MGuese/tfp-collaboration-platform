@@ -36,4 +36,15 @@ export class ImageUploadComponent {
       console.error(e)
     }
   }
+
+  removeImage(imageName: string) {
+    const currentFiles = this.selectedFiles
+    this.selectedFiles = []
+
+    for (let i = 0; i < currentFiles.length; i++) {
+      if (currentFiles[i].name !== imageName) {
+        this.selectedFiles.push(currentFiles[i])
+      }
+    }
+  }
 }

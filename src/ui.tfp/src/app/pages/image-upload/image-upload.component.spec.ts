@@ -10,14 +10,15 @@ describe('ImageUploadComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ImageUploadComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ImageUploadComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+
+})

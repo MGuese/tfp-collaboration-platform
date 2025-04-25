@@ -12,6 +12,7 @@ export class ImageUploadComponent {
   selectedFiles: File[] = [];
 
   onFileSelected(event: any) {
+    console.log(event)
     if (!event.target.files) {
       console.error("No files selected")
       return

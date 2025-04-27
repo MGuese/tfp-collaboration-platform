@@ -1,0 +1,48 @@
+.homeComponent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 200px;
+  border-right: 1px solid var(--secondary);
+  padding: 1em;
+}
+
+.mainContent {
+  width: 100%;
+  display: flex;
+  padding: 2em;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: start;
+}
+
+.sectionTitle {
+  padding-top: 1.5em;
+}
+
+.galleryList {
+  padding-top: 1em;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.galleryCard {
+  border-radius: 1em;
+  background-color: var(--primary);
+}
+
+.galleryThumbnail {
+  padding: 1em;
+  width: 12em;
+  height: 12em;
+}
+
+.galleryTitle {
+  text-align: center;
+  padding-bottom: 1em;
+}

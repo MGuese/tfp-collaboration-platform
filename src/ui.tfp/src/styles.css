@@ -1,32 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  /*--background: #fef9ef;*/
-  --background: #001d3d;
-  --accent-01: #ffc300;
-  --accent-02: #ffd60a;
+  --text: #eaeff7;
+  --text-dark: #111111;
+  --background: #090b11;
+  --primary: #5886ea;
+  --secondary: #71bde2;
+  --accent: #ee1c54;
 }
 
 @font-face {
-  font-family: "Manjari", sans-serif;
-  src: url("app/public/Manjari-Regular.ttf") format("truetype");
+  font-family: "Inter";
+  src: url("app/public/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-html {
-  font-family: "Manjari", sans-serif;
-  background-color: var(--background);
-  color: #eeeeee;
+* {
+  margin: 0;
 }
 
-body, div {
+html {
+  font-family: Inter;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+body,
+div {
   margin: 0;
   padding: 0;
 }
 
-button {
+button,
+.button {
   border: none;
-  border-radius: 1rem;
-  padding: 0.5rem 1rem;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+}
+
+.button-primary {
+  background-color: var(--primary);
+}
+
+.button-secondary {
+  background-color: var(--secondary);
+}
+
+.button-accent {
+  background-color: var(--accent);
 }

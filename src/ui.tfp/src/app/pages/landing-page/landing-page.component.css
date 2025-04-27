@@ -13,3 +13,66 @@ h1 {
 .uploadImageButton {
   background-color: var(--accent-01);
 }
+
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.heroCol {
+  max-width: 50%;
+  padding: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 4em;
+  font-weight: 900;
+  margin: 0;
+  padding-bottom: 0.5em;
+}
+
+.heroText {
+  font-size: 1.25em;
+}
+
+.heroButton {
+  margin-top: 1em;
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.heroImage {
+  max-width: 90%;
+  border-radius: 2em;
+}
+
+.sectionHeader {
+  font-size: 3em;
+  font-weight: 700;
+  padding-bottom: 0.5em;
+}
+
+.featureList {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.featureCard {
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  border-radius: 1em;
+  padding: 0.5em 2em;
+  color: var(--text-dark);
+  width: 200px;
+  min-width: 100px;
+}

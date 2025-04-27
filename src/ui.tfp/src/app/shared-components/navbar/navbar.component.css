@@ -1,23 +1,27 @@
 nav {
   width: 100vw;
-  background-color: var(--accent-01);
+  border-bottom: 1px solid var(--secondary);
   margin: 0;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  color: var(--background);
   font-weight: 600;
 }
 
 a {
   text-decoration: none;
-  color: var(--background);
+  color: var(--text);
 }
 
 .logoText {
   font-size: 1.5em;
   font-weight: 800;
   cursor: pointer;
+}
+
+.linkCollection {
+  display: flex;
+  gap: 1em;
 }

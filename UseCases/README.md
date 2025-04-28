@@ -1,16 +1,16 @@
 # How to User Drawio
 
-diagrams.net (frühere Bezeichnung draw.io[3]) ist ein kostenloses Diagramm- und Zeichenprogramm. Die auf dem Electron Framework basierende Software[4] kann sowohl lokal installiert werden, als auch als Online-Dienst im Browser laufen. Auf diese Weise kann sie auch in Anwendungen von Drittanbietern eingebettet werden.[5] Da nur ein Teil des Quelltexts offengelegt ist, handelt es sich nicht um Open Source. 
+diagrams.net (formerly draw.io[3]) is a free diagramming and drawing programme. The software, which is based on the Electron Framework[4], can be installed locally or run as an online service in the browser. In this way, it can also be embedded in third-party applications.[5] As only part of the source code is open, it is not open source. 
 [wikiepdia](https://de.wikipedia.org/wiki/Diagrams.net)
 
-App direkt verwenden: https://app.diagrams.net/
+Use the app directly: https://app.diagrams.net/
 
 ## Working local
 
-Es gibt die möglichkeit Drawio auch offline zu verwenden.
+It is also possible to use Drawio offline.
 
-Desktop App: 
+Desktop app: 
 https://github.com/jgraph/drawio-desktop
 
-Oder mit einer VSCode Extension: 
+Or with a VSCode extension: 
 https://marketplace.visualstudio.com/items/?itemName=hediet.vscode-drawio

@@ -50,3 +50,8 @@ button,
 .button-accent {
   background-color: var(--accent);
 }
+
+.sidebarNextToContent {
+  display: flex;
+  justify-content: start;
+}

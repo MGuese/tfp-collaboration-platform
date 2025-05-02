@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { ImageUploadService } from '../../services/image-upload.service';
+import { SidebarComponent } from "../../shared-components/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-image-upload',
-  imports: [],
+  imports: [SidebarComponent],
   templateUrl: './image-upload.component.html',
   styleUrl: './image-upload.component.css'
 })

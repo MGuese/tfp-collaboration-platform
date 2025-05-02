@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { SidebarComponent } from "../../shared-components/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-gallery-page',
-  imports: [RouterLink],
+  imports: [SidebarComponent],
   templateUrl: './gallery-page.component.html',
   styleUrl: './gallery-page.component.css'
 })

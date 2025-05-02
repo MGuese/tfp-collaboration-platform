@@ -1,22 +1,25 @@
-<div class="image-upload-component">
-  <h1>Upload your Images</h1>
-  <input type="file" class="image-input" (change)="onFileSelected($event)" multiple #imageUploadInput>
-  <p>Use the button below to select all the files you want to upload.<br>
-    Once you click on the Upload-Button, they are added to your profile.</p>
+<div class="sidebarNextToContent">
+  <app-sidebar ></app-sidebar>
+  <div class="image-upload-component">
+    <h1>Upload your Images</h1>
+    <input type="file" class="image-input" (change)="onFileSelected($event)" multiple #imageUploadInput>
+    <p>Use the button below to select all the files you want to upload.<br>
+      Once you click on the Upload-Button, they are added to your profile.</p>
 
-  <div></div>
-  <div></div>
+    <div></div>
+    <div></div>
 
-  <button class="button button-secondary" (click)="imageUploadInput.click()">Select Images</button>
+    <button class="button button-secondary" (click)="imageUploadInput.click()">Select Images</button>
 
-  <div class="selectedImageContainer">
-    @for (image of selectedFiles; track image.name) {
-  <li>{{ image.name }}<button class="removeImageBtn button-accent" (click)="removeImage(image.name)">remove</button></li>
-    } @empty {
-    <p>No files selected yet.</p>
-    }
-  </div>
+    <div class="selectedImageContainer">
+      @for (image of selectedFiles; track image.name) {
+      <li>{{ image.name }}<button class="removeImageBtn button-accent" (click)="removeImage(image.name)">remove</button></li>
+      } @empty {
+      <p>No files selected yet.</p>
+      }
+    </div>
 
     <button class="button button-primary" (click)="submitImages()">Upload</button>
 
+  </div>
 </div>

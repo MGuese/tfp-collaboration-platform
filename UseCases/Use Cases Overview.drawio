@@ -1,0 +1,124 @@
+<mxfile host="65bd71144e">
+    <diagram name="Seite-1" id="fXeEnxFSeBbVZJitEgTp">
+        <mxGraphModel dx="1006" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-1" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="149" y="90" width="530" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-3" value="Upload photos" style="ellipse;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-9" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="50" y="180" width="85" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-7" value="" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;verticalLabelPosition=bottom;verticalAlign=top;align=center;shape=mxgraph.archimate3.actor;" parent="M2bbNXAT3qn4xKFGE8Yk-9" vertex="1">
+                    <mxGeometry x="21.75" width="26.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-8" value="&lt;div&gt;Photographer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="M2bbNXAT3qn4xKFGE8Yk-9" vertex="1">
+                    <mxGeometry x="-15" y="40" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-10" value="&lt;div&gt;TFP-Collab-Program&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="90" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-12" value="Delete photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-13" value="Create gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-14" value="Edit gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-15" value="Delete gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-16" value="Sort photos" style="ellipse;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-17" value="Not yet clarified whether necessary" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="20" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-18" value="Share gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-19" value="Open gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-20" value="Create photo post(Social media)" style="ellipse;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="165" y="420" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-21" value="Future feature" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="20" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-22" value="Sort galleries" style="ellipse;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="290" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-23" value="Calender" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="282.5" y="440" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-24" value="Moodboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="470" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-25" value="Portfolio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="490" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-26" value="Rate photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-27" value="Model" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;verticalLabelPosition=bottom;verticalAlign=top;align=center;shape=mxgraph.archimate3.actor;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="690" width="26.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-30" value="" style="whiteSpace=wrap;html=1;perimeter=rectanglePerimeter;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="570" width="530" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-28" value="Download photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="700" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-33" value="Open gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="640" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-34" value="Sort photos" style="ellipse;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="620" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-35" value="Rate photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="640" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-36" value="Download photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="209" y="170" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-37" value="&lt;div&gt;TFP-Collab-Program&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="580" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-38" value="Comment on photos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-39" value="Comment on photos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="670" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-40" value="Select photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="170" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-41" value="Select photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="700" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-44" value="Calender" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="720" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-45" value="Portfolio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="720" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-46" value="Delete photos from the recycle bin" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="350" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-47" value="Assign photos from recycle bin to gallery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="265" y="345" width="115" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-48" value="Assign photos from recycle bin to mood board" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="482.5" y="450" width="115" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

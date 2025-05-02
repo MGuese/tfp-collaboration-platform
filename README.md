@@ -1,17 +1,17 @@
-# tfp-collaboration-platform 
+# tfp-collaboration-platform
 
-Diese Plattform soll es Hobby-Fotografen es ermöglichen die Zusammen arbeit mit Models besser zu organisieren
+This plaform enables hobby photographers to better organise their collaboration with models
 
-## Was ist TFP?
+## What is TFP?
 
 [WIKI](https://github.com/MGuese/tfp-collaboration-platform/wiki/Was-ist-TFP%3F)
 
-## Beitragen
+## Contribute
 
-Pull Requests sind willkommen. Für größere Änderungen  bitte zuerst ein Issue öffnen und disskutieren.
+Pull requests are welcome. For major changes, please open and discuss an issue first.
 
-Bitte stellen Sie sicher, dass Sie die Tests entsprechend aktualisieren.
+Please make sure to update the tests accordingly.
 
-## License/Lizenz
+## Licence/Licence
 
 [MIT](https://choosealicense.com/licenses/mit/)

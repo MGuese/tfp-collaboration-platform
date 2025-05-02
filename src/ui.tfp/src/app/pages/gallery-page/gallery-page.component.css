@@ -1,0 +1,39 @@
+.galleryContainer {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.backButton {
+  width: 100px;
+  margin-bottom: 1em;
+}
+
+.galleryImageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em;
+  gap: 2em;
+}
+
+.imageElement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  border-radius: 1em;
+  background-color: var(--primary);
+  padding: 1em;
+}
+
+.imageElement>img {
+  max-height: 250px;
+  max-width: 300px;
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.starRatingDisplay {
+  padding: 0.5em;
+}

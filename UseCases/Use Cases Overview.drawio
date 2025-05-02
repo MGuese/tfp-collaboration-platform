@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Seite-1" id="fXeEnxFSeBbVZJitEgTp">
-        <mxGraphModel dx="694" dy="543" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1006" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -55,7 +55,7 @@
                 <mxCell id="M2bbNXAT3qn4xKFGE8Yk-22" value="Sort galleries" style="ellipse;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
                     <mxGeometry x="560" y="290" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-23" value="Dates" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-23" value="Calender" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
                     <mxGeometry x="282.5" y="440" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="M2bbNXAT3qn4xKFGE8Yk-24" value="Moodboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
@@ -103,7 +103,7 @@
                 <mxCell id="M2bbNXAT3qn4xKFGE8Yk-41" value="Select photos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="280" y="700" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-44" value="Dates" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                <mxCell id="M2bbNXAT3qn4xKFGE8Yk-44" value="Calender" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
                     <mxGeometry x="580" y="720" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="M2bbNXAT3qn4xKFGE8Yk-45" value="Portfolio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">

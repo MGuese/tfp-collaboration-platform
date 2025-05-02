@@ -1,6 +1,6 @@
 # tfp-collaboration-platform
 
-This platform should enable hobby photographers to better organise their collaboration with models
+This plaform enables hobby photographers to better organise their collaboration with models
 
 ## What is TFP?
 

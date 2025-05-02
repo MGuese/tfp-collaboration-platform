@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Seite-1" id="l0WvUJElL2ecB1N14b2X">
-        <mxGraphModel dx="694" dy="-283" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+        <mxGraphModel dx="1006" dy="-282" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -36,9 +36,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="_Efm3URx336y0hWJy-us-67" value="Must not open the wastepaper basket" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_Efm3URx336y0hWJy-us-66" vertex="1" connectable="0">
+                <mxCell id="_Efm3URx336y0hWJy-us-67" value="&lt;p&gt;Must not open the recycle bin&lt;/p&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_Efm3URx336y0hWJy-us-66" vertex="1" connectable="0">
                     <mxGeometry x="-0.3552" relative="1" as="geometry">
-                        <mxPoint x="-13" y="-15" as="offset"/>
+                        <mxPoint x="-28" y="-20" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="_Efm3URx336y0hWJy-us-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_Efm3URx336y0hWJy-us-70" target="_Efm3URx336y0hWJy-us-64" edge="1">
@@ -46,7 +46,7 @@
                         <mxPoint x="159.5" y="1379" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="_Efm3URx336y0hWJy-us-69" value="Can open the wastepaper basket" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_Efm3URx336y0hWJy-us-68" vertex="1" connectable="0">
+                <mxCell id="_Efm3URx336y0hWJy-us-69" value="Can open the recycle bin" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_Efm3URx336y0hWJy-us-68" vertex="1" connectable="0">
                     <mxGeometry x="0.3443" y="2" relative="1" as="geometry">
                         <mxPoint x="-2" y="-13" as="offset"/>
                     </mxGeometry>

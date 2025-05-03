@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-tfp_collab_userspace-c3710021-ccc9-43cb-a001-20798c356207</UserSecretsId>
+        <RootNamespace>tfp_collab_userspace</RootNamespace>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.3.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj" />
+      <ProjectReference Include="..\tfp-collab-userspace-storage-database\tfp-collab-userspace-storage-database.csproj" />
+      <ProjectReference Include="..\tfp-collab-userspace-storage-MinIO\tfp-collab-userspace-storage-MinIO.csproj" />
+    </ItemGroup>
+</Project>

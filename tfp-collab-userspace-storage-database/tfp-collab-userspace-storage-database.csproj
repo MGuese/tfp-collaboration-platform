@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>tfp_collab_userspace_storage_database</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.66" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="FluentResults">
+        <HintPath>..\..\..\.nuget\packages\fluentresults\3.16.0\lib\netstandard2.1\FluentResults.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

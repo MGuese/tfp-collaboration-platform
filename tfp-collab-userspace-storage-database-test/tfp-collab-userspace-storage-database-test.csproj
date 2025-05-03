@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>tfp_collab_userspace_storage_database_test</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector" Version="6.0.2"/>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="DapperExtensions" Version="1.7.0" />
+        <PackageReference Include="FluentResults" Version="3.16.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="NSubstitute" Version="5.3.0" />
+        <PackageReference Include="NUnit" Version="4.2.2"/>
+        <PackageReference Include="NUnit.Analyzers" Version="4.4.0"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.6.0"/>
+        <PackageReference Include="ServiceStack.OrmLite" Version="8.7.2" />
+        <PackageReference Include="ServiceStack.OrmLite.Sqlite.Core" Version="8.7.2" />
+        <PackageReference Include="Shouldly" Version="4.3.0" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="NUnit.Framework"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\tfp-collab-userspace-storage-database\tfp-collab-userspace-storage-database.csproj" />
+    </ItemGroup>
+
+</Project>

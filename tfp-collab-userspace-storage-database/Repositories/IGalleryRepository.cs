@@ -1,7 +1,7 @@
 using FluentResults;
 using tfp_collab_userspace_storage_database.Model;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfp_collab_userspace_storage_database.Repositories;
 
 public interface IGalleryRepository
     : IDisposable

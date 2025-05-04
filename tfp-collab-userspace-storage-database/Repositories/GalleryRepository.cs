@@ -3,16 +3,16 @@ using Dapper;
 using FluentResults;
 using tfp_collab_userspace_storage_database.Model;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfp_collab_userspace_storage_database.Repositories;
 
 public class GalleryRepository
     : IGalleryRepository
 {
     private readonly IDbConnection _connection;
 
-    public GalleryRepository(IDatabaseConnectionFactory connectionFactory)
+    public GalleryRepository(IDbConnectionFactory connectionFactory)
     {
-        _connection = connectionFactory.GetConnection();
+        _connection = connectionFactory.CreateConnection();
     }
 
     public async Task<Result<Gallery>> GetByIdAsync(Guid id)

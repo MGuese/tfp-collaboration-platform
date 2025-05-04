@@ -4,6 +4,7 @@ using Shouldly;
 using tfp_collab_userspace_domain.dto;
 using tfp_collab_userspace_storage_database;
 using tfp_collab_userspace_storage_database.Model;
+using tfp_collab_userspace_storage_database.Repositories;
 
 namespace tfp_collab_userspace_storage_database_test;
 
@@ -26,9 +27,9 @@ public class DapperServiceTest
             OwnerId = Guid.NewGuid()
         };
         InMemoryDatabase db = new ();
-        var connectionFactoryMock = Substitute.For<IDatabaseConnectionFactory>();
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
         using var connection = db.OpenConnection();
-        connectionFactoryMock.GetConnection().Returns(connection);
+        connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
         DapperService service = new(galleryRepository);
         
@@ -54,9 +55,9 @@ public class DapperServiceTest
         };
         var db = new InMemoryDatabase();
         db.Insert<Gallery>([gallery]);
-        var connectionFactoryMock = Substitute.For<IDatabaseConnectionFactory>();
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
         using var connection = db.OpenConnection();
-        connectionFactoryMock.GetConnection().Returns(connection);
+        connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
         DapperService service = new(galleryRepository);
         
@@ -84,9 +85,9 @@ public class DapperServiceTest
         };
         var db = new InMemoryDatabase();
         db.Insert<Gallery>([gallery]);
-        var connectionFactoryMock = Substitute.For<IDatabaseConnectionFactory>();
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
         using var connection = db.OpenConnection();
-        connectionFactoryMock.GetConnection().Returns(connection);
+        connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
         DapperService service = new(galleryRepository);
         

@@ -4,7 +4,7 @@ using Npgsql;
 namespace tfp_collab_userspace_storage_database;
 
 public class PostgresDbConnectionFactory
-    : IDatabaseConnectionFactory
+    : IDbConnectionFactory
 {
     private readonly string _connectionString;
 
@@ -13,7 +13,7 @@ public class PostgresDbConnectionFactory
         _connectionString = connectionString;
     }
 
-    public IDbConnection GetConnection()
+    public IDbConnection CreateConnection()
     {
         var connection = new NpgsqlConnection(_connectionString);
         connection.Open();

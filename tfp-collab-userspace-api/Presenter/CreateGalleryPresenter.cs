@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Response;
 
-public class CreateGalleryPresenter : ICreateGalleryOutputPort
+public class CreateGalleryPresenter 
+    : ICreateGalleryOutputPort
 {
     public IActionResult ViewModel { get; private set; }
 

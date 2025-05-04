@@ -1,6 +1,6 @@
-using System.Data;
-using Microsoft.Data.SqlClient;
+using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Service;
+using tfp_collab_userspace_domain.UseCase;
 using tfp_collab_userspace_storage_database;
 
 var configurationBuilder = new ConfigurationBuilder()
@@ -13,7 +13,19 @@ var services = new ServiceCollection();
 
 // Register Image Repository Service (assuming you've configured your IDbConnection)
 services.AddScoped<IDatabaseService, DapperService>();
-services.AddScoped<IDbConnection>(sp => new SqlConnection(configurationBuilder.GetConnectionString("DefaultConnection"))); // Example connection
+services.AddScoped<IGalleryRepository, GalleryRepository>();
+services.AddScoped<IDatabaseConnectionFactory>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    return new PostgresDbConnectionFactory(connectionString);
+});
+
+// Use Cases
+services.AddScoped<ICreateGalleryUseCase, CreateGalleryUseCase>();
+
+// presenter
+services.AddScoped<ICreateGalleryOutputPort, CreateGalleryPresenter>();
 
 var builder = WebApplication.CreateBuilder(); // This might still be available for building the app
 

@@ -6,8 +6,8 @@ using tfp_collab_userspace_domain.Service;
 
 namespace tfp_collab_userspace_domain.UseCase;
 
-public class CreateGalleryUseCase : 
-    ICreateGalleryUseCase
+public class CreateGalleryUseCase
+    : ICreateGalleryUseCase
 {
     private readonly IDatabaseService _databaseService;
     private readonly ICreateGalleryOutputPort _outputPort;

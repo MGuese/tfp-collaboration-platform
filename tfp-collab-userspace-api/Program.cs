@@ -1,3 +1,4 @@
+using tfp_collab_userspace_api.Presenter;
 using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_domain.UseCase;
@@ -26,9 +27,11 @@ builder.Services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
 
 // Use Cases
 builder.Services.AddScoped<ICreateGalleryUseCase, CreateGalleryUseCase>();
+builder.Services.AddScoped<IGetAllGalleriesUseCase, GetAllGalleriesUseCase>();
 
 // presenter
 builder.Services.AddScoped<ICreateGalleryOutputPort, CreateGalleryPresenter>();
+builder.Services.AddScoped<IGetAllGalleriesOutputPort, GetAllGalleriesPresenter>();
 
 // Add services to the container.
 builder.Services.AddControllers(); // For Web API or MVC
@@ -47,7 +50,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting(); // Enables endpoint routing
-app.UseAuthorization(); // Enables authorization
+//app.UseAuthorization(); // Enables authorization
 app.MapControllers(); // Maps controller actions to routes
 
 // Datenbank Schema erstellen wenn notwendig.

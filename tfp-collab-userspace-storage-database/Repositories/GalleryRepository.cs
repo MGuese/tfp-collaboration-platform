@@ -15,7 +15,7 @@ public class GalleryRepository
         _connection = connectionFactory.CreateConnection();
     }
 
-    public async Task<Result<Gallery>> GetByIdAsync(Guid id)
+    public async Task<Result<Gallery>> Get(Guid id)
     {
         var gallery = 
             await _connection.QuerySingleOrDefaultAsync<Gallery>(
@@ -24,6 +24,14 @@ public class GalleryRepository
         
         if (gallery is null) return Result.Fail("Gallery cannot be selected.");
         return Result.Ok(gallery);
+    }
+    
+    public async Task<Result<IEnumerable<Gallery>>> Get()
+    {
+        var galleries = await _connection.QueryAsync<Gallery>("SELECT * FROM Gallery");
+        
+        if (galleries is null) return Result.Fail("Galleries cannot be selected.");
+        return Result.Ok(galleries);
     }
 
     public async Task<Result> CreateAsync(Gallery gallery)

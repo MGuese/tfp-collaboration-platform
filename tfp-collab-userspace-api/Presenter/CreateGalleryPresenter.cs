@@ -11,12 +11,11 @@ public class CreateGalleryPresenter
     {
         ViewModel = response.Success
             ? (IActionResult)new CreatedAtActionResult(
-                "CreateGallery", 
-                "GalleryController", 
-                new { response.Id }, 
+                "Create", // Verwende den tatsächlichen Namen der Controller-Action
+                "GalleryController",
+                new { response.Id },
                 response)
             : new BadRequestObjectResult(new { response.FailureNumber });
         return Task.CompletedTask;
     }
-
 }

@@ -14,15 +14,27 @@ public class DapperService
         _galleryRepository = imageRepository;
     }
 
-    public async Task<GalleryDto?> GetGalleryByIdAsync(Guid id)
+    public async Task<GalleryDto?> Get(Guid id)
     {
-        var  imageModelResult = 
-            await _galleryRepository.GetByIdAsync(id);
+        var  imageModelResult = await _galleryRepository.Get(id);
 
         if (imageModelResult.IsSuccess)
         {
             // Todo Logging
             return imageModelResult.Value.ToDto();;
+        }
+
+        return null;
+    }
+    
+    public async Task<IEnumerable<GalleryDto>> Get()
+    {
+        var  imageModelResult = await _galleryRepository.Get();
+
+        if (imageModelResult.IsSuccess)
+        {
+            // Todo Logging
+            return imageModelResult.Value.Select(model => model.ToDto());
         }
 
         return null;

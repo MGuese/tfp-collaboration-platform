@@ -62,7 +62,7 @@ public class DapperServiceTest
         DapperService service = new(galleryRepository);
         
         // Act
-        var galleryDto = await service.GetGalleryByIdAsync(gallery.Id);
+        var galleryDto = await service.Get(gallery.Id);
         
         // Assert
         galleryDto.ShouldNotBeNull();
@@ -95,7 +95,7 @@ public class DapperServiceTest
         await service.DeleteGalleryAsync(gallery.Id);
         
         // Assert
-        var galleryDto = await service.GetGalleryByIdAsync(gallery.Id);
+        var galleryDto = await service.Get(gallery.Id);
         galleryDto.ShouldBeNull();
     }
 }

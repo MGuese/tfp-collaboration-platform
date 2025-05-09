@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using tfp_collab_userspace_domain.dto;
 using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Request;
@@ -6,16 +7,23 @@ using tfp_collab_userspace_domain.Service;
 
 namespace tfp_collab_userspace_domain.UseCase;
 
+public interface ICreateGalleryUseCase
+{
+    Task Handle(CreateGalleryRequest request);
+}
+
 public class CreateGalleryUseCase
     : ICreateGalleryUseCase
 {
     private readonly IDatabaseService _databaseService;
     private readonly ICreateGalleryOutputPort _outputPort;
+    private readonly ILogger<CreateGalleryUseCase> _logger;
 
-    public CreateGalleryUseCase(IDatabaseService databaseService, ICreateGalleryOutputPort outputPort)
+    public CreateGalleryUseCase(IDatabaseService databaseService, ICreateGalleryOutputPort outputPort, ILogger<CreateGalleryUseCase> logger)
     {
         _databaseService = databaseService;
         _outputPort = outputPort;
+        _logger = logger;
     }
 
     public async Task Handle(CreateGalleryRequest request)
@@ -32,7 +40,7 @@ public class CreateGalleryUseCase
         }
         catch (Exception ex)
         {
-            // Log the error
+            _logger.LogError(ex, "Failed to create gallery");
             await _outputPort.Handle(new CreateGalleryResponse(null, $"Error creating gallery: {ex.Message}"));
         }
     }

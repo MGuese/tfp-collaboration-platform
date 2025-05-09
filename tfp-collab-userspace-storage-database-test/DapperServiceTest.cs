@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Shouldly;
 using tfp_collab_userspace_domain.dto;
@@ -28,10 +29,11 @@ public class DapperServiceTest
         };
         InMemoryDatabase db = new ();
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<DapperService>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository);
+        DapperService service = new(galleryRepository, logging);
         
         // Act
         await service.CreateGalleryAsync(gallery);
@@ -56,10 +58,11 @@ public class DapperServiceTest
         var db = new InMemoryDatabase();
         db.Insert<Gallery>([gallery]);
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<DapperService>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository);
+        DapperService service = new(galleryRepository, logging);
         
         // Act
         var galleryDto = await service.Get(gallery.Id);
@@ -86,10 +89,11 @@ public class DapperServiceTest
         var db = new InMemoryDatabase();
         db.Insert<Gallery>([gallery]);
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<DapperService>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
         using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository);
+        DapperService service = new(galleryRepository, logging);
         
         // Act
         await service.DeleteGalleryAsync(gallery.Id);

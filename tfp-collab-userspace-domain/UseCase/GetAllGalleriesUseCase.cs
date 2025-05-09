@@ -1,4 +1,4 @@
-using tfp_collab_userspace_domain.dto;
+using Microsoft.Extensions.Logging;
 using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Request;
 using tfp_collab_userspace_domain.Response;
@@ -10,11 +10,13 @@ public class GetAllGalleriesUseCase : IGetAllGalleriesUseCase
 {
     private readonly IDatabaseService _databaseService;
     private readonly IGetAllGalleriesOutputPort _outputPort;
+    private readonly ILogger<GetAllGalleriesUseCase> _logger;
 
-    public GetAllGalleriesUseCase(IDatabaseService databaseService, IGetAllGalleriesOutputPort outputPort)
+    public GetAllGalleriesUseCase(IDatabaseService databaseService, IGetAllGalleriesOutputPort outputPort, ILogger<GetAllGalleriesUseCase> logger)
     {
         _databaseService = databaseService;
         _outputPort = outputPort;
+        _logger = logger;
     }
 
     public async Task Handle(GetAllGalleriesRequest request)
@@ -26,7 +28,7 @@ public class GetAllGalleriesUseCase : IGetAllGalleriesUseCase
         }
         catch (Exception ex)
         {
-            // Log the error
+            _logger.LogError(ex, "Failed to get galleries");
             await _outputPort.Handle(new GetAllGalleriesResponse($"Error retrieving galleries: {ex.Message}"));
         }
     }

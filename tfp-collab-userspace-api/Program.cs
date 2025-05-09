@@ -14,6 +14,16 @@ var configurationBuilder = new ConfigurationBuilder()
 
 var builder = WebApplication.CreateBuilder(); // This might still be available for building the app
 
+// Füge den Logging-Dienst hinzu
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddConsole();
+    // Optional: Konfiguration aus appsettings.json laden (Abschnitt "Logging")
+    loggingBuilder.AddConfiguration(builder.Configuration.GetSection("Logging"));
+    // Optional: Setze das minimale LogLevel direkt im Code
+    loggingBuilder.SetMinimumLevel(LogLevel.Information);
+});
+
 // Database und DbConnection
 builder.Services.AddScoped<IDbConnectionFactory>(provider =>
 {
@@ -48,9 +58,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseRouting(); // Enables endpoint routing
-//app.UseAuthorization(); // Enables authorization
+
+// Deine Endpunkte
+app.MapGet("/", (ILogger<Program> logger) =>
+{
+     logger.LogInformation("Root-Endpunkt wurde aufgerufen.");
+     return "Hallo von deiner Minimal API mit Logger!";
+});
+
 app.MapControllers(); // Maps controller actions to routes
 
 // Datenbank Schema erstellen wenn notwendig.

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using tfp_collab_userspace_domain.dto;
@@ -18,6 +19,7 @@ public class CreateGalleryUseCaseTests
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
         var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
+        var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         var request = new CreateGalleryRequest { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
         var expectedGalleryId = Guid.NewGuid();
 
@@ -31,7 +33,7 @@ public class CreateGalleryUseCaseTests
                 galleryDto.Id = expectedGalleryId;
             });
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
 
         // Act
         await useCase.Handle(request);
@@ -62,6 +64,7 @@ public class CreateGalleryUseCaseTests
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
         var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
+        var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         var request = new CreateGalleryRequest { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
         var expectedErrorMessage = "Database error occurred.";
         var databaseException = new Exception(expectedErrorMessage);
@@ -70,7 +73,7 @@ public class CreateGalleryUseCaseTests
         mockDatabaseService.CreateGalleryAsync(Arg.Any<GalleryDto>())
             .ThrowsAsync(databaseException);
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
 
         // Act
         await useCase.Handle(request);
@@ -93,10 +96,11 @@ public class CreateGalleryUseCaseTests
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
         var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
+        var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         CreateGalleryRequest request = null; // Simulate a null request
         var expectedErrorMessage = "Object reference not set to an instance of an object."; // Default exception message for null reference
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
 
         // Act
         await useCase.Handle(request);

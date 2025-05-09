@@ -17,43 +17,71 @@ public class GalleryRepository
 
     public async Task<Result<Gallery>> Get(Guid id)
     {
-        var gallery = 
-            await _connection.QuerySingleOrDefaultAsync<Gallery>(
-                "SELECT * FROM Gallery WHERE Id = @Id", 
-                new { Id = id });
-        
-        if (gallery is null) return Result.Fail("Gallery cannot be selected.");
-        return Result.Ok(gallery);
+        try
+        {
+            var gallery = 
+                await _connection.QuerySingleOrDefaultAsync<Gallery>(
+                    "SELECT * FROM Gallery WHERE Id = @Id", 
+                    new { Id = id });
+            
+            if (gallery is null) return Result.Fail("Gallery has not been selected.");
+            return Result.Ok(gallery);
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail("Gallery has not been selected.").WithError(ex.ToString());
+        }
     }
     
     public async Task<Result<IEnumerable<Gallery>>> Get()
     {
-        var galleries = await _connection.QueryAsync<Gallery>("SELECT * FROM Gallery");
-        
-        if (galleries is null) return Result.Fail("Galleries cannot be selected.");
-        return Result.Ok(galleries);
+        try
+        {
+            var galleries = await _connection.QueryAsync<Gallery>("SELECT * FROM Gallery");
+            
+            if (galleries is null) return Result.Fail("Galleries cannot be selected.");
+            return Result.Ok(galleries);
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail("Gallery cannot be selected.").WithError(ex.ToString());
+        }
     }
 
     public async Task<Result> CreateAsync(Gallery gallery)
     {
-        gallery.Id = Guid.NewGuid();
-        gallery.AddedOn = DateTime.UtcNow;
-        var rowsInserted = await _connection.ExecuteAsync(
-            "INSERT INTO Gallery (Id, OwnerId, Name, AddedOn) VALUES (@Id, @OwnerId, @Name, @AddedOn)", 
-            gallery);
-        
-        if (rowsInserted <= 0) return Result.Fail("Gallery cannot be created.");
-        return Result.Ok();
+        try
+        {
+            gallery.Id = Guid.NewGuid();
+            gallery.AddedOn = DateTime.UtcNow;
+            var rowsInserted = await _connection.ExecuteAsync(
+                "INSERT INTO Gallery (Id, OwnerId, Name, AddedOn) VALUES (@Id, @OwnerId, @Name, @AddedOn)", 
+                gallery);
+            
+            if (rowsInserted <= 0) return Result.Fail("Gallery has not been created.");
+            return Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail("Gallery has not been created.").WithError(ex.ToString());
+        }
     }
 
     public async Task<Result> DeleteAsync(Guid id)
     {
-        var rowsDeleted = await _connection.ExecuteAsync(
-            "DELETE FROM Gallery WHERE Id = @Id", 
-            new { Id = id });
-        
-        if (rowsDeleted <= 0) return Result.Fail("Gallery cannot be deleted.");
-        return Result.Ok();
+        try
+        {
+            var rowsDeleted = await _connection.ExecuteAsync(
+                "DELETE FROM Gallery WHERE Id = @Id", 
+                new { Id = id });
+            
+            if (rowsDeleted <= 0) return Result.Fail("Gallery has not been deleted.");
+            return Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail("Gallery has not been deleted.").WithError(ex.ToString());
+        }
     }
 
     public void Dispose()

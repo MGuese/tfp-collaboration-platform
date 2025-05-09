@@ -23,7 +23,7 @@ public class GetAllGalleriesUseCase : IGetAllGalleriesUseCase
     {
         try
         {
-            var galleries = await _databaseService.Get();
+            var galleries = await _databaseService.GetAsync();
             await _outputPort.Handle(new GetAllGalleriesResponse(galleries));
         }
         catch (Exception ex)

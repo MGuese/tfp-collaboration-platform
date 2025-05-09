@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using FluentResults;
 using tfp_collab_userspace_domain.dto;
 using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_storage_database.Mapping;
@@ -20,7 +19,7 @@ public class DapperService
         _logger = logger;
     }
 
-    public async Task<GalleryDto?> Get(Guid id)
+    public async Task<GalleryDto?> GetAsync(Guid id)
     {
         var  imageModelResult = await _galleryRepository.Get(id);
 
@@ -31,13 +30,13 @@ public class DapperService
         }
         else
         {
-            _logger.LogFluentResultErrors<DapperService, Gallery>(imageModelResult, "");
+            _logger.LogFluentResultErrors<DapperService, Gallery>(imageModelResult, "Get Gallery by Id");
         }
 
         return null;
     }
     
-    public async Task<IEnumerable<GalleryDto>> Get()
+    public async Task<IEnumerable<GalleryDto>> GetAsync()
     {
         var  imageModelResult = await _galleryRepository.Get();
 
@@ -46,6 +45,10 @@ public class DapperService
             // Todo Logging
             return imageModelResult.Value.Select(model => model.ToDto());
         }
+        else
+        {
+            _logger.LogFluentResultErrors<DapperService, IEnumerable<Gallery>>(imageModelResult, "Get all Galleries");
+        }
 
         return default;
     }
@@ -53,13 +56,26 @@ public class DapperService
     public async Task CreateGalleryAsync(GalleryDto galleryDto)
     {
         var model = galleryDto.ToModel();
-        await _galleryRepository.CreateAsync(model);
-        galleryDto.Id = model.Id;
-        galleryDto.AddedOn = model.AddedOn;
+        var result = await _galleryRepository.CreateAsync(model);
+
+        if (result.IsSuccess)
+        {
+            galleryDto.Id = model.Id;
+            galleryDto.AddedOn = model.AddedOn;
+        }
+        else
+        {
+            _logger.LogFluentResultErrors<DapperService, IEnumerable<Gallery>>(result, "Create Gallery");
+        }
     }
     
     public async Task DeleteGalleryAsync(Guid id)
     {
-        await _galleryRepository.DeleteAsync(id);
+        var result = await _galleryRepository.DeleteAsync(id);
+        
+        if (!result.IsSuccess)
+        {
+            _logger.LogFluentResultErrors<DapperService, IEnumerable<Gallery>>(result, "Delete Gallery");
+        }
     }
 }

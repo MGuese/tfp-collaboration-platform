@@ -1,5 +1,3 @@
-using tfp_collab_userspace_api.Presenter;
-using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_domain.UseCase;
 using tfp_collab_userspace_storage_database;
@@ -39,15 +37,12 @@ builder.Services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
 builder.Services.AddScoped<ICreateGalleryUseCase, CreateGalleryUseCase>();
 builder.Services.AddScoped<IGetAllGalleriesUseCase, GetAllGalleriesUseCase>();
 
-// presenter
-builder.Services.AddScoped<ICreateGalleryOutputPort, CreateGalleryPresenter>();
-builder.Services.AddScoped<IGetAllGalleriesOutputPort, GetAllGalleriesPresenter>();
-
 // Add services to the container.
 builder.Services.AddControllers(); // For Web API or MVC
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

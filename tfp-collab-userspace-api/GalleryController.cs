@@ -1,56 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
 using tfp_collab_userspace_domain.dto;
-using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Request;
 using tfp_collab_userspace_domain.UseCase;
 
 [ApiController]
 [Route("api/[controller]")]
-public class GalleryController : ControllerBase
+public class GalleryController (ILogger<GalleryController> logger)
+    : ControllerBase
 {
-    private readonly ICreateGalleryUseCase _createGalleryUseCase;
-    private readonly ICreateGalleryOutputPort _createGalleryPresenter;
-    private readonly IGetAllGalleriesUseCase _getAllGalleriesUseCase;
-    private readonly IGetAllGalleriesOutputPort _getAllGalleriesPresenter;
-
-    public GalleryController(
-        ICreateGalleryUseCase createGalleryUseCase, 
-        ICreateGalleryOutputPort createGalleryPresenter, 
-        IGetAllGalleriesUseCase getAllGalleriesUseCase,
-        IGetAllGalleriesOutputPort getAllGalleriesPresenter)
-    {
-        _createGalleryUseCase = createGalleryUseCase;
-        _createGalleryPresenter = createGalleryPresenter;
-        _getAllGalleriesUseCase = getAllGalleriesUseCase;
-        _getAllGalleriesPresenter = getAllGalleriesPresenter;
-    }
-
-    [HttpPost()]
-    public async Task<ActionResult<Guid>> Create([FromBody] CreateGalleryRequest request)
+    [HttpPost(Name = "Create")]
+    public async Task<ActionResult<Guid>> Create([FromBody] CreateGalleryRequest request, [FromServices] ICreateGalleryUseCase createGalleryUseCase)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
+        
+        var createGalleryResponse = await createGalleryUseCase.Handle(request);
 
-        await _createGalleryUseCase.Handle(request);
-
-        if (_createGalleryPresenter.ViewModel is CreatedAtActionResult createdResult)
+        if (createGalleryResponse.IsSuccessul)
         {
-            // Hier könntest du ggf. die Id aus dem Response extrahieren, falls nötig
-            return CreatedAtAction(createdResult.ActionName, createdResult.ControllerName, createdResult.RouteValues, createdResult.Value);
+            return Ok(createGalleryResponse.Id);
         }
-        else if (_createGalleryPresenter.ViewModel is BadRequestObjectResult badRequestResult)
-        {
-            return BadRequest(badRequestResult.Value);
-        }
-
-        // Fallback, sollte nicht erreicht werden, wenn der Presenter korrekt arbeitet
-        return StatusCode(500);
+        return BadRequest(createGalleryResponse.ErrorMessage);
     }
     
     [HttpGet()]
-    public async Task<ActionResult<IEnumerable<GalleryDto>>> Get([FromBody] GetAllGalleriesRequest request)
+    public async Task<ActionResult<IEnumerable<GalleryDto>>> Get([FromBody] GetAllGalleriesRequest request, [FromServices] GetAllGalleriesUseCase getAllGalleriesUseCase)
     {
         if (!ModelState.IsValid)
         {
@@ -58,9 +34,12 @@ public class GalleryController : ControllerBase
         }
         
         // The Presenter is already injected and will receive the output
-        await _getAllGalleriesUseCase.Handle(request);
+        var getAllGalleriesResponse = await getAllGalleriesUseCase.Handle(request);
 
-        return _getAllGalleriesPresenter.ViewModel;
+        if (getAllGalleriesResponse.IsSuccessful)
+        {
+            return Ok(getAllGalleriesResponse.Galleries);
+        }
+        return BadRequest(getAllGalleriesResponse.ErrorMessage);
     }
-
 }

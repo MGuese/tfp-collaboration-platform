@@ -1,10 +1,9 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
+using Shouldly;
 using tfp_collab_userspace_domain.dto;
-using tfp_collab_userspace_domain.OutputPorts;
 using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.Response;
 using tfp_collab_userspace_domain.UseCase;
 using tfp_collab_userspace_domain.Service;
 
@@ -18,7 +17,6 @@ public class CreateGalleryUseCaseTests
     {
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
-        var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
         var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         var request = new CreateGalleryRequest { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
         var expectedGalleryId = Guid.NewGuid();
@@ -33,10 +31,10 @@ public class CreateGalleryUseCaseTests
                 galleryDto.Id = expectedGalleryId;
             });
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, logger);
 
         // Act
-        await useCase.Handle(request);
+        var createGalleryResponse = await useCase.Handle(request);
 
         // Assert
         // Verify that the database service was called with the correct GalleryDto
@@ -49,13 +47,9 @@ public class CreateGalleryUseCaseTests
             ));
 
         // Verify that the output port was called with a successful response and the correct Id
-        await mockOutputPort
-            .Received(1)
-            .Handle(Arg.Is<CreateGalleryResponse>(response =>
-                response.Success &&
-                response.Id == expectedGalleryId &&
-                response.FailureNumber == null
-            ));
+        createGalleryResponse.IsSuccessul.ShouldBeTrue();
+        createGalleryResponse.Id.ShouldBe(expectedGalleryId);
+        createGalleryResponse.ErrorMessage.ShouldBeNull();
     }
 
     [Test]
@@ -63,7 +57,6 @@ public class CreateGalleryUseCaseTests
     {
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
-        var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
         var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         var request = new CreateGalleryRequest { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
         var expectedErrorMessage = "Database error occurred.";
@@ -73,21 +66,19 @@ public class CreateGalleryUseCaseTests
         mockDatabaseService.CreateGalleryAsync(Arg.Any<GalleryDto>())
             .ThrowsAsync(databaseException);
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, logger);
 
         // Act
-        await useCase.Handle(request);
+        var createGalleryResponse = await useCase.Handle(request);
 
         // Assert
         // Verify that the database service was called
         await mockDatabaseService.Received(1).CreateGalleryAsync(Arg.Any<GalleryDto>());
 
-        // Verify that the output port was called with an error response and the correct message
-        await mockOutputPort.Received(1).Handle(Arg.Is<CreateGalleryResponse>(response =>
-            !response.Success &&
-            response.Id == null &&
-            response.FailureNumber == $"Error creating gallery: {expectedErrorMessage}"
-        ));
+        createGalleryResponse.IsSuccessul.ShouldBeFalse();
+        createGalleryResponse.Id.ShouldBe(Guid.Empty);
+        createGalleryResponse.ErrorMessage.ShouldStartWith($"Error creating gallery:");
+        createGalleryResponse.ErrorMessage.ShouldContain(expectedErrorMessage);
     }
 
     [Test]
@@ -95,26 +86,23 @@ public class CreateGalleryUseCaseTests
     {
         // Arrange
         var mockDatabaseService = Substitute.For<IDatabaseService>();
-        var mockOutputPort = Substitute.For<ICreateGalleryOutputPort>();
         var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         CreateGalleryRequest request = null; // Simulate a null request
         var expectedErrorMessage = "Object reference not set to an instance of an object."; // Default exception message for null reference
 
-        var useCase = new CreateGalleryUseCase(mockDatabaseService, mockOutputPort, logger);
+        var useCase = new CreateGalleryUseCase(mockDatabaseService, logger);
 
         // Act
-        await useCase.Handle(request);
+        var createGalleryResponse = await useCase.Handle(request);
 
         // Assert
-        // Verify that the database service was NOT called
         await mockDatabaseService.DidNotReceive().CreateGalleryAsync(Arg.Any<GalleryDto>());
 
         // Verify that the output port was called with an error response due to the exception
-        await mockOutputPort.Received(1).Handle(Arg.Is<CreateGalleryResponse>(response =>
-            !response.Success &&
-            response.Id == null &&
-            response.FailureNumber.StartsWith("Error creating gallery:") &&
-            response.FailureNumber.Contains(expectedErrorMessage)
-        ));
+        
+        createGalleryResponse.IsSuccessul.ShouldBeFalse();
+        createGalleryResponse.Id.ShouldBe(Guid.Empty);
+        createGalleryResponse.ErrorMessage.ShouldStartWith("Error creating gallery:");
+        createGalleryResponse.ErrorMessage.ShouldContain(expectedErrorMessage);
     }
 }

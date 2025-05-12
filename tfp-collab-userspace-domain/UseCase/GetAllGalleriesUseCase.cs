@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
-using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.Response;
 using tfp_collab_userspace_domain.Service;
+using tfp_collab_userspace_interfaces.Request;
+using tfp_collab_userspace_interfaces.Response;
 
 namespace tfp_collab_userspace_domain.UseCase;
 
@@ -21,7 +21,7 @@ public class GetAllGalleriesUseCase
     {
         try
         {
-            var galleries = await _databaseService.GetAsync();
+            var galleries = await _databaseService.GetAsync(request.OwnerId);
             return new GetAllGalleriesResponse(galleries);
         }
         catch (Exception ex)
@@ -30,9 +30,4 @@ public class GetAllGalleriesUseCase
             return new GetAllGalleriesResponse($"Error retrieving galleries: {ex.Message}");
         }
     }
-}
-
-public interface IGetAllGalleriesUseCase
-{
-    Task<GetAllGalleriesResponse> Handle(GetAllGalleriesRequest request);
 }

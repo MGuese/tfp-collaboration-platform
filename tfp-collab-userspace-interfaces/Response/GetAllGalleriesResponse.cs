@@ -1,6 +1,6 @@
-using tfp_collab_userspace_domain.dto;
+using tfp_collab_userspace_interfaces.dto;
 
-namespace tfp_collab_userspace_domain.Response;
+namespace tfp_collab_userspace_interfaces.Response;
 
 public class GetAllGalleriesResponse
 {
@@ -12,12 +12,12 @@ public class GetAllGalleriesResponse
     {
         Galleries = galleries;
         IsSuccessful = true;
-        ErrorMessage = null;
+        ErrorMessage = string.Empty;
     }
 
     public GetAllGalleriesResponse(string errorMessage)
     {
-        Galleries = null;
+        Galleries = Array.Empty<GalleryDto>();
         IsSuccessful = false;
         ErrorMessage = errorMessage;
     }

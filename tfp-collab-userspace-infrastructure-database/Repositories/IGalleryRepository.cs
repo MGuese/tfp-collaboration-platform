@@ -6,8 +6,8 @@ namespace tfp_collab_userspace_storage_database.Repositories;
 public interface IGalleryRepository
     : IDisposable
 {
-    Task<Result<Gallery>> Get(Guid id);
-    Task<Result<IEnumerable<Gallery>>> Get();
+    Task<Result<Gallery>> Get(Guid ownerId, Guid id);
+    Task<Result<IEnumerable<Gallery>>> Get(Guid ownerId);
     Task<Result> CreateAsync(Gallery image);
     Task<Result> DeleteAsync(Guid id);
 }

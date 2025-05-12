@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
-using tfp_collab_userspace_domain.dto;
 using tfp_collab_userspace_domain.Service;
+using tfp_collab_userspace_interfaces.dto;
 using tfp_collab_userspace_storage_database.Mapping;
 using tfp_collab_userspace_storage_database.Model;
 using tfp_collab_userspace_storage_database.Repositories;
@@ -19,9 +19,9 @@ public class DapperService
         _logger = logger;
     }
 
-    public async Task<GalleryDto?> GetAsync(Guid id)
+    public async Task<GalleryDto?> GetAsync(Guid ownerId, Guid galleryId)
     {
-        var  imageModelResult = await _galleryRepository.Get(id);
+        var  imageModelResult = await _galleryRepository.Get(ownerId, galleryId);
 
         if (imageModelResult.IsSuccess)
         {
@@ -36,9 +36,9 @@ public class DapperService
         return null;
     }
     
-    public async Task<IEnumerable<GalleryDto>> GetAsync()
+    public async Task<IEnumerable<GalleryDto>> GetAsync(Guid ownerId)
     {
-        var  imageModelResult = await _galleryRepository.Get();
+        var  imageModelResult = await _galleryRepository.Get(ownerId);
 
         if (imageModelResult.IsSuccess)
         {

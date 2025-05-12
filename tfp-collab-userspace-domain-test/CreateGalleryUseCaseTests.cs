@@ -2,10 +2,10 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using Shouldly;
-using tfp_collab_userspace_domain.dto;
-using tfp_collab_userspace_domain.Request;
 using tfp_collab_userspace_domain.UseCase;
 using tfp_collab_userspace_domain.Service;
+using tfp_collab_userspace_interfaces.dto;
+using tfp_collab_userspace_interfaces.Request;
 
 namespace tfp_collab_userspace_domain_test;
 

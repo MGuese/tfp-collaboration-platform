@@ -15,13 +15,13 @@ public class GalleryRepository
         _connection = connectionFactory.CreateConnection();
     }
 
-    public async Task<Result<Gallery>> Get(Guid id)
+    public async Task<Result<Gallery>> Get(Guid ownerId, Guid id)
     {
         try
         {
             var gallery = 
                 await _connection.QuerySingleOrDefaultAsync<Gallery>(
-                    "SELECT * FROM Gallery WHERE Id = @Id", 
+                    "SELECT * FROM Gallery WHERE OwnerId = @ownerId and Id = @Id", 
                     new { Id = id });
             
             if (gallery is null) return Result.Fail("Gallery has not been selected.");
@@ -33,11 +33,11 @@ public class GalleryRepository
         }
     }
     
-    public async Task<Result<IEnumerable<Gallery>>> Get()
+    public async Task<Result<IEnumerable<Gallery>>> Get(Guid ownerId)
     {
         try
         {
-            var galleries = await _connection.QueryAsync<Gallery>("SELECT * FROM Gallery");
+            var galleries = await _connection.QueryAsync<Gallery>("SELECT * FROM Gallery WHERE OwnerId = @ownerId and");
             
             if (galleries is null) return Result.Fail("Galleries cannot be selected.");
             return Result.Ok(galleries);

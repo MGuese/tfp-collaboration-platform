@@ -1,4 +1,4 @@
-using tfp_collab_userspace_domain.dto;
+using tfp_collab_userspace_interfaces.dto;
 using tfp_collab_userspace_storage_database.Model;
 
 namespace tfp_collab_userspace_storage_database.Mapping;

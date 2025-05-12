@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Shouldly;
-using tfp_collab_userspace_domain.dto;
+using tfp_collab_userspace_interfaces.dto;
 using tfp_collab_userspace_storage_database;
 using tfp_collab_userspace_storage_database.Model;
 using tfp_collab_userspace_storage_database.Repositories;
@@ -65,7 +65,7 @@ public class DapperServiceTest
         DapperService service = new(galleryRepository, logging);
         
         // Act
-        var galleryDto = await service.GetAsync(gallery.Id);
+        var galleryDto = await service.GetAsync(gallery.OwnerId, gallery.Id);
         
         // Assert
         galleryDto.ShouldNotBeNull();

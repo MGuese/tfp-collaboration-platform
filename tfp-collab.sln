@@ -2,15 +2,17 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{098C6B84-27C5-42FC-A0AF-797BDA8F4A09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-storage-database", "tfp-collab-userspace-storage-database\tfp-collab-userspace-storage-database.csproj", "{36111C55-4953-441E-B9D7-2021E752C6D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-infrastructure-database", "tfp-collab-userspace-infrastructure-database\tfp-collab-userspace-infrastructure-database.csproj", "{36111C55-4953-441E-B9D7-2021E752C6D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-domain", "tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj", "{F52A731B-C8D4-4582-B804-5A174E8BECFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-api", "tfp-collab-userspace-api\tfp-collab-userspace-api.csproj", "{15AA86A1-1986-401B-B0DA-1D548A3D0029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-storage-database-test", "tfp-collab-userspace-storage-database-test\tfp-collab-userspace-storage-database-test.csproj", "{EF70042D-C92E-4516-B7BB-24FF0CF8DBBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-Infrastructure-database-test", "tfp-collab-userspace-Infrastructure-database-test\tfp-collab-userspace-Infrastructure-database-test.csproj", "{EF70042D-C92E-4516-B7BB-24FF0CF8DBBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-domain-test", "tfp-collab-userspace-domain-test\tfp-collab-userspace-domain-test.csproj", "{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-interfaces", "tfp-collab-userspace-interfaces\tfp-collab-userspace-interfaces.csproj", "{BA462979-CE76-4929-A1DC-44714D4A0E8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +40,9 @@ Global
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

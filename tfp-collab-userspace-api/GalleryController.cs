@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using tfp_collab_userspace_domain.dto;
-using tfp_collab_userspace_domain.Request;
 using tfp_collab_userspace_domain.UseCase;
+using tfp_collab_userspace_interfaces.dto;
+using tfp_collab_userspace_interfaces.Request;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -25,7 +25,7 @@ public class GalleryController (ILogger<GalleryController> logger)
         return BadRequest(createGalleryResponse.ErrorMessage);
     }
     
-    [HttpGet()]
+    [HttpGet(Name = "Get")]
     public async Task<ActionResult<IEnumerable<GalleryDto>>> Get([FromBody] GetAllGalleriesRequest request, [FromServices] GetAllGalleriesUseCase getAllGalleriesUseCase)
     {
         if (!ModelState.IsValid)

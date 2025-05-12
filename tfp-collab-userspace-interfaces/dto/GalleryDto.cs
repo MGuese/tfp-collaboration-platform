@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_domain.dto;
+namespace tfp_collab_userspace_interfaces.dto;
 
 public class GalleryDto
 {

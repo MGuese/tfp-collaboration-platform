@@ -1,15 +1,10 @@
 using Microsoft.Extensions.Logging;
-using tfp_collab_userspace_domain.dto;
-using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.Response;
 using tfp_collab_userspace_domain.Service;
+using tfp_collab_userspace_interfaces.dto;
+using tfp_collab_userspace_interfaces.Request;
+using tfp_collab_userspace_interfaces.Response;
 
 namespace tfp_collab_userspace_domain.UseCase;
-
-public interface ICreateGalleryUseCase
-{
-    Task<CreateGalleryResponse> Handle(CreateGalleryRequest request);
-}
 
 public class CreateGalleryUseCase
     : ICreateGalleryUseCase

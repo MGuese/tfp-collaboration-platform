@@ -1,16 +1,24 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using tfp_collab_userspace_api.Authorization;
 using tfp_collab_userspace_domain.UseCase;
 using tfp_collab_userspace_interfaces.dto;
 using tfp_collab_userspace_interfaces.Request;
 
 [ApiController]
 [Route("api/[controller]")]
-public class GalleryController (ILogger<GalleryController> logger)
+[Authorize]
+public class GalleryController (ILogger<GalleryController> logger, ICurrentUserContext currentUserContext)
     : ControllerBase
 {
-    [HttpPost(Name = "Create")]
-    public async Task<ActionResult<Guid>> Create([FromBody] CreateGalleryRequest request, [FromServices] ICreateGalleryUseCase createGalleryUseCase)
+    [HttpPost]
+    public async Task<ActionResult<Guid>> Create(
+        [FromBody] CreateGalleryRequest request, 
+        [FromServices] ICreateGalleryUseCase createGalleryUseCase)
     {
+        request.OwnerId = currentUserContext.GetCurrentOwnerId();
+        logger.LogDebug($"Received request for OwnerId: {request.OwnerId}, creating Gallery {request.Name}");
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -25,14 +33,26 @@ public class GalleryController (ILogger<GalleryController> logger)
         return BadRequest(createGalleryResponse.ErrorMessage);
     }
     
-    [HttpGet(Name = "Get")]
-    public async Task<ActionResult<IEnumerable<GalleryDto>>> Get([FromBody] GetAllGalleriesRequest request, [FromServices] GetAllGalleriesUseCase getAllGalleriesUseCase)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<GalleryDto>>> Get(
+        [FromServices] IGetAllGalleriesUseCase getAllGalleriesUseCase)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
         
+        var ownerIdClaim = currentUserContext.GetCurrentOwnerId();
+        if (Guid.Empty != ownerIdClaim)
+        {
+            return Unauthorized("OwnerId could not be retrieved from authentication context.");
+        }
+        
+        var request = new GetAllGalleriesRequest
+        {
+            OwnerId = ownerIdClaim
+        };
+
         // The Presenter is already injected and will receive the output
         var getAllGalleriesResponse = await getAllGalleriesUseCase.Handle(request);
 

@@ -23,12 +23,11 @@ public class CreateGalleryUseCaseTests
 
         // Setup the mock to return a specific Id when CreateGalleryAsync is called
         mockDatabaseService.CreateGalleryAsync(Arg.Any<GalleryDto>())
-            .Returns(Task.CompletedTask)
-            .AndDoes(info =>
+            .Returns(callInfo =>
             {
-                // Simulate the database setting the Id after creation
-                var galleryDto = info.Arg<GalleryDto>();
+                var galleryDto = callInfo.Arg<GalleryDto>();
                 galleryDto.Id = expectedGalleryId;
+                return Task.FromResult<GalleryDto?>(galleryDto);
             });
 
         var useCase = new CreateGalleryUseCase(mockDatabaseService, logger);

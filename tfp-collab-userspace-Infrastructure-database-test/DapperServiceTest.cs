@@ -45,6 +45,40 @@ public class DapperServiceTest
     }
     
     [Test]
+    public async Task CreateGalleryFailed()
+    {
+        // Arrange
+        Gallery gallery = new ()
+        { 
+            Id = Guid.NewGuid(),
+            AddedOn = DateTime.Now,
+            Name = "Meine erste Gallery", 
+            OwnerId = Guid.NewGuid()
+        };
+        InMemoryDatabase db = new ();
+        db.Insert([gallery]);
+        
+        GalleryDto galleryDto = new ()
+        { 
+            Name = "Meine erste Gallery", 
+            OwnerId = gallery.OwnerId,
+            AddedOn = DateTime.Now
+        };
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<DapperService>>();
+        using var connection = db.OpenConnection();
+        connectionFactoryMock.CreateConnection().Returns(connection);
+        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
+        DapperService service = new(galleryRepository, logging);
+        
+        // Act
+        var galleryDtoResult = await service.CreateGalleryAsync(galleryDto);
+        
+        // Assert
+        galleryDtoResult.ShouldBeNull();
+    }
+    
+    [Test]
     public async Task GetGallery()
     {
         // Arrange
@@ -73,6 +107,25 @@ public class DapperServiceTest
         galleryDto.Name.ShouldBe(gallery.Name);
         galleryDto.OwnerId.ShouldBe(gallery.OwnerId);
         galleryDto.AddedOn.ShouldBe(gallery.AddedOn);
+    }
+    
+    [Test]
+    public async Task GetGalleryFailed()
+    {
+        // Arrange
+        var db = new InMemoryDatabase();
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<DapperService>>();
+        using var connection = db.OpenConnection();
+        connectionFactoryMock.CreateConnection().Returns(connection);
+        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
+        DapperService service = new(galleryRepository, logging);
+        
+        // Act
+        var galleryDto = await service.GetAsync(Guid.NewGuid(), Guid.NewGuid());
+        
+        // Assert
+        galleryDto.ShouldBeNull();
     }
     
     [Test]

@@ -32,34 +32,4 @@ public class GalleryController (ILogger<GalleryController> logger, ICurrentUserC
         }
         return BadRequest(createGalleryResponse.ErrorMessage);
     }
-    
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<GalleryDto>>> Get(
-        [FromServices] IGetAllGalleriesUseCase getAllGalleriesUseCase)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        
-        var ownerIdClaim = currentUserContext.GetCurrentOwnerId();
-        if (Guid.Empty != ownerIdClaim)
-        {
-            return Unauthorized("OwnerId could not be retrieved from authentication context.");
-        }
-        
-        var request = new GetAllGalleriesRequest
-        {
-            OwnerId = ownerIdClaim
-        };
-
-        // The Presenter is already injected and will receive the output
-        var getAllGalleriesResponse = await getAllGalleriesUseCase.Handle(request);
-
-        if (getAllGalleriesResponse.IsSuccessful)
-        {
-            return Ok(getAllGalleriesResponse.Galleries);
-        }
-        return BadRequest(getAllGalleriesResponse.ErrorMessage);
-    }
 }

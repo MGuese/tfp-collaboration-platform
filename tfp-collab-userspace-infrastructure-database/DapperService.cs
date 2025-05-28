@@ -53,7 +53,7 @@ public class DapperService
         return default;
     }
 
-    public async Task CreateGalleryAsync(GalleryDto galleryDto)
+    public async Task<GalleryDto?> CreateGalleryAsync(GalleryDto galleryDto)
     {
         var model = galleryDto.ToModel();
         var result = await _galleryRepository.CreateAsync(model);
@@ -62,10 +62,12 @@ public class DapperService
         {
             galleryDto.Id = model.Id;
             galleryDto.AddedOn = model.AddedOn;
+            return galleryDto;
         }
         else
         {
             _logger.LogFluentResultErrors<DapperService, IEnumerable<Gallery>>(result, "Create Gallery");
+            return null;
         }
     }
     

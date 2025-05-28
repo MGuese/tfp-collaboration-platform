@@ -19,7 +19,8 @@ public class InMemoryDatabase
                     Id BLOB PRIMARY KEY,
                     OwnerId BLOB,
                     Name TEXT,
-                    AddedOn TIMESTAMP
+                    AddedOn TIMESTAMP,
+                    UNIQUE (OwnerId, Name)
                 );");
     }
     

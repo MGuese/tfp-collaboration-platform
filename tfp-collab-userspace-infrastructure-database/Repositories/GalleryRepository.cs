@@ -15,14 +15,14 @@ public class GalleryRepository
         _connection = connectionFactory.CreateConnection();
     }
 
-    public async Task<Result<Gallery>> Get(Guid ownerId, Guid id)
+    public async Task<Result<Gallery>> Get(Guid ownerId, Guid galleryId)
     {
         try
         {
             var gallery = 
                 await _connection.QuerySingleOrDefaultAsync<Gallery>(
-                    "SELECT * FROM Gallery WHERE OwnerId = @ownerId and Id = @Id", 
-                    new { Id = id });
+                    "SELECT * FROM Gallery WHERE OwnerId = @OwnerId and Id = @Id", 
+                    new { Id = galleryId, OwnerId =  ownerId });
             
             if (gallery is null) return Result.Fail("Gallery has not been selected.");
             return Result.Ok(gallery);

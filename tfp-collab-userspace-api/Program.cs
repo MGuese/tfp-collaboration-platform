@@ -40,7 +40,6 @@ builder.Services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
 
 // Use Cases
 builder.Services.AddScoped<ICreateGalleryUseCase, CreateGalleryUseCase>();
-builder.Services.AddScoped<IGetAllGalleriesUseCase, GetAllGalleriesUseCase>();
 
 // Add services to the container.
 builder.Services.AddControllers(); // For Web API or MVC

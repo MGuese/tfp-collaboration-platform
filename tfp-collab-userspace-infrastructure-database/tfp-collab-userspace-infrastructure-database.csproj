@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="Dapper" Version="2.1.66" />
+      <PackageReference Include="FluentResults" Version="3.16.0" />
       <PackageReference Include="Npgsql" Version="9.0.3" />
     </ItemGroup>
 

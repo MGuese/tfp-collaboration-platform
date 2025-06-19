@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using tfp_collab_userspace_api.Authorization;
 using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_domain.UseCase;
@@ -93,6 +94,39 @@ else
     });
 }
 
+builder.Services.AddAuthorization();
+
+builder.Services.AddControllers();
+
+// --- SWAGGER KONFIGURATION ---
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    // Konfiguriere Swagger für JWT Bearer Token (nützlich für Produktion oder manuelle Tests)
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            []
+        }
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -104,14 +138,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting(); // Enables endpoint routing
-app.MapControllers(); // Maps controller actions to routes
 
-if (!app.Environment.IsDevelopment()) // Nur im NICHT-Entwicklungsmodus Authentifizierung anwenden
-{
-    app.UseAuthentication();
-}
-
-app.UseAuthorization();  // Wichtig für den Produktions-CurrentUserContext
+// AUTHENTIFIZIERUNG und AUTORISIERUNG Middleware
+// Diese müssen nach UseRouting() und vor MapControllers() stehen
+app.UseAuthentication(); // <-- IMMER HIER AUFRUFEN
+app.UseAuthorization();  // <-- IMMER HIER AUFRUFEN
 
 // Datenbank Schema erstellen wenn notwendig.
 using (var scope = app.Services.CreateScope())
@@ -119,5 +150,5 @@ using (var scope = app.Services.CreateScope())
     var databaseInitializer = scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>();
     databaseInitializer.InitializeDatabaseAsync().Wait(); // Oder await im async Kontext
 }
-
+app.MapControllers(); // Maps controller actions to routes
 app.Run();

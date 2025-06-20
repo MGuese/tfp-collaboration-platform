@@ -10,10 +10,23 @@ using tfp_collab_userspace_storage_database;
 using tfp_collab_userspace_storage_database.Initialize;
 using tfp_collab_userspace_storage_database.Repositories;
 
+var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+
+if (string.IsNullOrEmpty(environmentName))
+{
+    // Wenn keine Umgebungsvariable gesetzt ist, wird standardmäßig 'Development' angenommen.
+    // Dies ist eine gängige Konvention für lokale Entwicklung.
+    environmentName = "Development";
+    Console.WriteLine("Umgebungsvariable ASPNETCORE_ENVIRONMENT/DOTNET_ENVIRONMENT nicht gefunden. Standard auf 'Development' gesetzt.");
+}
+
 var configurationBuilder = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    // Add other configuration sources as needed
+    // 2. Lade umgebungsspezifische Datei (z.B. appsettings.Development.json oder appsettings.Production.json)
+    //    Diese Datei überschreibt bei Übereinstimmung Werte aus appsettings.json
+    .AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
+    // Optional: Umgebungsvariablen können alles andere überschreiben
+    .AddEnvironmentVariables()
     .Build();
 
 var builder = WebApplication.CreateBuilder(); // This might still be available for building the app

@@ -2,17 +2,18 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Shouldly;
-using tfp_collab_userspace_interfaces.dto;
+using tfp_collab_userspace_domain.DomainObjects;
+using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_storage_database;
 using tfp_collab_userspace_storage_database.Model;
 using tfp_collab_userspace_storage_database.Repositories;
 
 namespace tfp_collab_userspace_storage_database_test;
 
-public class DapperServiceTest
+public class UnitOfWorkTest
 {
     [SetUp]
-    public void OneTimeSetup()
+    public void Setup()
     {
         DapperExtensions.DapperExtensions.SetMappingAssemblies([Assembly.GetExecutingAssembly()]);
         Dapper.SqlMapper.AddTypeHandler(typeof(Guid), new GuidTypeHandler());
@@ -22,26 +23,28 @@ public class DapperServiceTest
     public async Task CreateGallery()
     {
         // Arrange
-        GalleryDto gallery = new ()
+        GalleryDo galleryDo = new ()
         { 
             Name = "Meine erste Gallery", 
-            OwnerId = Guid.NewGuid()
+            OwnerId = OwnerId.New()
         };
         InMemoryDatabase db = new ();
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
-        var logging = Substitute.For<ILogger<DapperService>>();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
-        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository, logging);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
         
         // Act
-        await service.CreateGalleryAsync(gallery);
+        var galleryDoResult = await uof.GalleryRepository.CreateAsync(galleryDo);
+        await uof.SaveAsync();
         
         // Assert
-        gallery.Id.ShouldNotBe(Guid.Empty);
-        gallery.Name.ShouldBe(gallery.Name);
-        gallery.OwnerId.ShouldBe(gallery.OwnerId);
+        galleryDoResult.IsSuccess.ShouldBeTrue();
+        
+        galleryDoResult.Value.Id.ShouldNotBe((GalleryId)Guid.Empty);
+        galleryDoResult.Value.Name.ShouldBe(galleryDo.Name);
+        galleryDoResult.Value.OwnerId.ShouldBe(galleryDo.OwnerId);
     }
     
     [Test]
@@ -58,55 +61,59 @@ public class DapperServiceTest
         InMemoryDatabase db = new ();
         db.Insert([gallery]);
         
-        GalleryDto galleryDto = new ()
+        GalleryDo galleryDo = new ()
         { 
             Name = "Meine erste Gallery", 
-            OwnerId = gallery.OwnerId,
+            OwnerId = OwnerId.New(),
             AddedOn = DateTime.Now
         };
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
-        var logging = Substitute.For<ILogger<DapperService>>();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
-        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository, logging);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
         
         // Act
-        var galleryDtoResult = await service.CreateGalleryAsync(galleryDto);
+        var galleryDtoResult = await uof.GalleryRepository.CreateAsync(galleryDo);
+        await uof.SaveAsync();
         
         // Assert
-        galleryDtoResult.ShouldBeNull();
+        galleryDtoResult.IsSuccess.ShouldBeTrue();
     }
     
     [Test]
     public async Task GetGallery()
     {
+        GalleryId galleryId = GalleryId.New();
+        OwnerId ownerId = OwnerId.New();
         // Arrange
         Gallery gallery = new()
         {
-            Id = Guid.NewGuid(),
+            Id = galleryId,
             Name = "Meine erste Gallery",
-            OwnerId = Guid.NewGuid(),
+            OwnerId = ownerId,
             AddedOn = DateTime.UtcNow
         };
         var db = new InMemoryDatabase();
         db.Insert<Gallery>([gallery]);
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
-        var logging = Substitute.For<ILogger<DapperService>>();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
         using var connection = db.OpenConnection();
         connectionFactoryMock.CreateConnection().Returns(connection);
-        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository, logging);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
         
         // Act
-        var galleryDto = await service.GetAsync(gallery.OwnerId, gallery.Id);
+        var galleryDoResult = await uof.GalleryRepository.GetAsync(ownerId, galleryId);
+        await uof.SaveAsync();
         
         // Assert
-        galleryDto.ShouldNotBeNull();
-        galleryDto.Id.ShouldBe(gallery.Id);
-        galleryDto.Name.ShouldBe(gallery.Name);
-        galleryDto.OwnerId.ShouldBe(gallery.OwnerId);
-        galleryDto.AddedOn.ShouldBe(gallery.AddedOn);
+        galleryDoResult.IsSuccess.ShouldBeTrue();
+        GalleryDo galleryDo = galleryDoResult.Value;
+        galleryDo.ShouldNotBeNull();
+        galleryDo.Id.ShouldBe((GalleryId)gallery.Id);
+        galleryDo.Name.ShouldBe(gallery.Name);
+        galleryDo.OwnerId.ShouldBe((OwnerId)gallery.OwnerId);
+        galleryDo.AddedOn.ShouldBe(gallery.AddedOn);
     }
     
     [Test]
@@ -114,45 +121,49 @@ public class DapperServiceTest
     {
         // Arrange
         var db = new InMemoryDatabase();
-        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
-        var logging = Substitute.For<ILogger<DapperService>>();
         using var connection = db.OpenConnection();
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
+        
         connectionFactoryMock.CreateConnection().Returns(connection);
-        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository, logging);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
         
         // Act
-        var galleryDto = await service.GetAsync(Guid.NewGuid(), Guid.NewGuid());
+        var galleryDtoResult = await uof.GalleryRepository.GetAsync(OwnerId.New(), GalleryId.New());
+        await uof.SaveAsync();
         
         // Assert
-        galleryDto.ShouldBeNull();
+        galleryDtoResult.IsFailed.ShouldBeTrue();
     }
     
     [Test]
     public async Task DeleteGallery()
     {
         // Arrange
+        GalleryId galleryId = GalleryId.New();
+        OwnerId ownerId = OwnerId.New();
         Gallery gallery = new()
         {
-            Id = Guid.NewGuid(),
+            Id = galleryId,
             Name = "Meine erste Gallery",
-            OwnerId = Guid.NewGuid(),
+            OwnerId = ownerId,
             AddedOn = DateTime.UtcNow
         };
+        
         var db = new InMemoryDatabase();
+        using var connection = db.OpenConnection();
         db.Insert<Gallery>([gallery]);
         var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
-        var logging = Substitute.For<ILogger<DapperService>>();
-        using var connection = db.OpenConnection();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
+        
         connectionFactoryMock.CreateConnection().Returns(connection);
-        using var galleryRepository = new GalleryRepository(connectionFactoryMock);
-        DapperService service = new(galleryRepository, logging);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
         
         // Act
-        await service.DeleteGalleryAsync(gallery.Id);
+        var deleteGalleryResult = await uof.GalleryRepository.DeleteAsync(galleryId);
+        await uof.SaveAsync();
         
         // Assert
-        var galleryDto = await service.GetAsync(gallery.Id);
-        galleryDto.ShouldBeNull();
+        deleteGalleryResult.IsSuccess.ShouldBeTrue();
     }
 }

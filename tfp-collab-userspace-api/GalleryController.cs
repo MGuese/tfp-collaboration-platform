@@ -1,14 +1,12 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tfp_collab_userspace_api.Authorization;
+using tfp_collab_userspace_domain.Request;
 using tfp_collab_userspace_domain.UseCase;
-using tfp_collab_userspace_interfaces.dto;
-using tfp_collab_userspace_interfaces.Request;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+//[Authorize]
 public class GalleryController (ILogger<GalleryController> logger, ICurrentUserContext currentUserContext)
     : ControllerBase
 {

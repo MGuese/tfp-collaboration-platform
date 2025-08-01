@@ -48,8 +48,8 @@ builder.Services.AddScoped<IDbConnectionFactory>(provider =>
     var connectionString = configuration.GetConnectionString("DefaultConnection");
     return new PostgresDbConnectionFactory(connectionString);
 });
-builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
-builder.Services.AddScoped<IDatabaseService, DapperService>();
+//builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
 
 // Use Cases
@@ -61,12 +61,14 @@ builder.Services.AddControllers(); // For Web API or MVC
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 // Konditionale Registrierung des ICurrentUserContext
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddSingleton<ICurrentUserContext, DevelopmentCurrentUserContext>();
     Console.WriteLine("Using DevelopmentCurrentUserContext for OwnerId.");
-
+    
+    /*
     // Für den Entwicklungsmodus: Registrieren Sie ein Dev-Authentifizierungsschema
     // Setzen Sie dies als DefaultAuthenticateScheme und DefaultChallengeScheme
     builder.Services.AddAuthentication(options =>
@@ -75,12 +77,13 @@ if (builder.Environment.IsDevelopment())
             options.DefaultChallengeScheme = "DevScheme";    // Wichtig!
         })
         .AddScheme<AuthenticationSchemeOptions, DevelopmentAuthHandler>("DevScheme", options => { });
+        */
 }
 else
 {
     builder.Services.AddSingleton<ICurrentUserContext, CurrentUserContext>();
     Console.WriteLine("Using Production CurrentUserContext for OwnerId.");
-    
+    /*
     // 1. Authentifizierung hinzufügen
     builder.Services.AddAuthentication(options =>
     {
@@ -105,9 +108,10 @@ else
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])) // Ihr geheimer Schlüssel
         };
     });
+    */
 }
 
-builder.Services.AddAuthorization();
+//builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 
@@ -115,6 +119,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    /*
     // Konfiguriere Swagger für JWT Bearer Token (nützlich für Produktion oder manuelle Tests)
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -138,9 +143,17 @@ builder.Services.AddSwaggerGen(options =>
             []
         }
     });
+    */
 });
 
 var app = builder.Build();
+
+// Datenbank Schema erstellen wenn notwendig.
+using (var scope = app.Services.CreateScope())
+{
+    var databaseInitializer = scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>();
+    await databaseInitializer.InitializeDatabaseAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -153,15 +166,10 @@ if (app.Environment.IsDevelopment())
 app.UseRouting(); // Enables endpoint routing
 
 // AUTHENTIFIZIERUNG und AUTORISIERUNG Middleware
-// Diese müssen nach UseRouting() und vor MapControllers() stehen
-app.UseAuthentication(); // <-- IMMER HIER AUFRUFEN
-app.UseAuthorization();  // <-- IMMER HIER AUFRUFEN
+// diese müssen nach UseRouting() und vor MapControllers() stehen
+//app.UseAuthentication(); 
+//app.UseAuthorization();
 
-// Datenbank Schema erstellen wenn notwendig.
-using (var scope = app.Services.CreateScope())
-{
-    var databaseInitializer = scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>();
-    databaseInitializer.InitializeDatabaseAsync().Wait(); // Oder await im async Kontext
-}
+
 app.MapControllers(); // Maps controller actions to routes
 app.Run();

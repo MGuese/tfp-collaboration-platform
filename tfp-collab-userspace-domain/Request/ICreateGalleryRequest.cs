@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_interfaces.Request;
+namespace tfp_collab_userspace_domain.Request;
 
 public interface ICreateGalleryRequest
 {

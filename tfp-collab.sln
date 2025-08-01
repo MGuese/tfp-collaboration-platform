@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-Infras
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-domain-test", "tfp-collab-userspace-domain-test\tfp-collab-userspace-domain-test.csproj", "{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-interfaces", "tfp-collab-userspace-interfaces\tfp-collab-userspace-interfaces.csproj", "{BA462979-CE76-4929-A1DC-44714D4A0E8C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,9 +38,5 @@ Global
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA462979-CE76-4929-A1DC-44714D4A0E8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

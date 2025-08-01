@@ -1,14 +1,14 @@
-using tfp_collab_userspace_interfaces.dto;
+using tfp_collab_userspace_domain.DomainObjects;
 
-namespace tfp_collab_userspace_interfaces.Response;
+namespace tfp_collab_userspace_domain.Response;
 
 public class GetAllGalleriesResponse
 {
-    public IEnumerable<GalleryDto> Galleries { get; }
+    public IEnumerable<GalleryDo> Galleries { get; }
     public bool IsSuccessful { get; }
     public string ErrorMessage { get; }
 
-    public GetAllGalleriesResponse(IEnumerable<GalleryDto> galleries)
+    public GetAllGalleriesResponse(IEnumerable<GalleryDo> galleries)
     {
         Galleries = galleries;
         IsSuccessful = true;
@@ -17,7 +17,7 @@ public class GetAllGalleriesResponse
 
     public GetAllGalleriesResponse(string errorMessage)
     {
-        Galleries = Array.Empty<GalleryDto>();
+        Galleries = Array.Empty<GalleryDo>();
         IsSuccessful = false;
         ErrorMessage = errorMessage;
     }

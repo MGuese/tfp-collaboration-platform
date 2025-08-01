@@ -31,6 +31,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj" />
+      <ProjectReference Include="..\tfp-collab-userspace-infrastructure-database\tfp-collab-userspace-infrastructure-database.csproj" />
     </ItemGroup>
 
 </Project>

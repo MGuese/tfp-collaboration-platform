@@ -1,20 +1,20 @@
 using Microsoft.Extensions.Logging;
+using tfp_collab_userspace_domain.DomainObjects;
+using tfp_collab_userspace_domain.Request;
+using tfp_collab_userspace_domain.Response;
 using tfp_collab_userspace_domain.Service;
-using tfp_collab_userspace_interfaces.dto;
-using tfp_collab_userspace_interfaces.Request;
-using tfp_collab_userspace_interfaces.Response;
 
 namespace tfp_collab_userspace_domain.UseCase;
 
 public class CreateGalleryUseCase
     : ICreateGalleryUseCase
 {
-    private readonly IDatabaseService _databaseService;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger<CreateGalleryUseCase> _logger;
 
-    public CreateGalleryUseCase(IDatabaseService databaseService, ILogger<CreateGalleryUseCase> logger)
+    public CreateGalleryUseCase(IUnitOfWork unitOfWork, ILogger<CreateGalleryUseCase> logger)
     {
-        _databaseService = databaseService;
+        _unitOfWork = unitOfWork;
         _logger = logger;
     }
 
@@ -22,13 +22,22 @@ public class CreateGalleryUseCase
     {
         try
         {
-            GalleryDto newGallery = new ()
+            GalleryDo newGallery = new ()
             {
                 Name = request.Name, 
-                OwnerId = request.OwnerId
+                OwnerId = (OwnerId)request.OwnerId
             };
-            await _databaseService.CreateGalleryAsync(newGallery);
-            return new CreateGalleryResponse(newGallery.Id);
+            var createResult = await _unitOfWork.GalleryRepository.CreateAsync(newGallery);
+            await _unitOfWork.SaveAsync();
+            if (createResult.IsFailed)
+            {
+                var errorMessages = createResult.Errors.Select(e => e.Message);
+                // Verknüpfe alle Nachrichten mit einem Zeilenumbruch
+                var allErrorsAsString = string.Join(Environment.NewLine, errorMessages);
+                return new CreateGalleryResponse(allErrorsAsString);
+            }
+                
+            return new CreateGalleryResponse(createResult.Value.Id);
         }
         catch (Exception ex)
         {

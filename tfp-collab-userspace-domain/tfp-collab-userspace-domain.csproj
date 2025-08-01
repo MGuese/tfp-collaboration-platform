@@ -17,8 +17,4 @@
       </Reference>
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\tfp-collab-userspace-interfaces\tfp-collab-userspace-interfaces.csproj" />
-    </ItemGroup>
-
 </Project>

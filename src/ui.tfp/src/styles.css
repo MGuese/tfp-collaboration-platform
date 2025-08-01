@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  /*--background: #fef9ef;*/
+  --background: #001d3d;
+  --accent-01: #ffc300;
+  --accent-02: #ffd60a;
+}
+
+@font-face {
+  font-family: "Manjari", sans-serif;
+  src: url("app/public/Manjari-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "Manjari", sans-serif;
+  background-color: var(--background);
+  color: #eeeeee;
+}
+
+body, div {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}

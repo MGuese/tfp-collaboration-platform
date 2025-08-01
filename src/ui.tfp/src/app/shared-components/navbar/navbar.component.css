@@ -1,0 +1,23 @@
+nav {
+  width: 100vw;
+  background-color: var(--accent-01);
+  margin: 0;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--background);
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: var(--background);
+}
+
+.logoText {
+  font-size: 1.5em;
+  font-weight: 800;
+  cursor: pointer;
+}

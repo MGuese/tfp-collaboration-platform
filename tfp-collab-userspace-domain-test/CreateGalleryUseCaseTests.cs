@@ -51,7 +51,7 @@ public class CreateGalleryUseCaseTests
 
         // Verify that the output port was called with a successful response and the correct Id
         createGalleryResponse.IsSuccessul.ShouldBeTrue();
-        createGalleryResponse.Id.ShouldBe(galleryDo.Id);
+        createGalleryResponse.Id.ShouldBe(galleryDo.Id.Value);
         createGalleryResponse.ErrorMessage.ShouldBeEmpty();
     }
 

@@ -10,9 +10,9 @@ public static class GalleryMappingExtensions
     {
         return new GalleryDo
         {
-            Id = (GalleryId)model.Id, 
+            Id = model.Id, 
             Name = model.Name, 
-            OwnerId = (OwnerId)model.OwnerId,
+            OwnerId = model.OwnerId,
             AddedOn = model.AddedOn
         };
     }

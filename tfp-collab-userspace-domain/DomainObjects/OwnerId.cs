@@ -11,14 +11,8 @@ public readonly struct OwnerId
     }
     
     public static OwnerId New() => new(Guid.NewGuid());
-
-    // Expliziter Umwandlungsoperator von Guid nach GalleryId
-    public static explicit operator OwnerId(Guid guid) => new(guid);
-
-    // Expliziter Umwandlungsoperator von string nach GalleryId
+    public static implicit operator OwnerId(Guid guid) => new(guid);
     public static explicit operator OwnerId(string guid) => new(Guid.Parse(guid));
-
-    // Impliziter Umwandlungsoperator von GalleryId nach Guid (optional, aber nützlich)
     public static implicit operator Guid(OwnerId id) => id.Value;
 
     public override bool Equals(object? obj)
@@ -29,16 +23,6 @@ public readonly struct OwnerId
     public bool Equals(OwnerId other)
     {
         return EqualityComparer<Guid>.Default.Equals(Value, other.Value);
-    }
-
-    public static bool operator ==(OwnerId left, OwnerId right)
-    {
-        return left.Equals(right);
-    }
-
-    public static bool operator !=(OwnerId left, OwnerId right)
-    {
-        return !(left == right);
     }
 
     public override int GetHashCode()

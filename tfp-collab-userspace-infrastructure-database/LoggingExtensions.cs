@@ -5,41 +5,41 @@ namespace tfp_collab_userspace_storage_database;
 
 public static class LoggingExtensions
 {
-    public static void LogFluentResultErrors<T, S>(this ILogger<T> logger, Result<S> result, string operationDescription)
+    public static void LogFluentResultErrors<T, TS>(this ILogger<T> logger, Result<TS> result, string operationDescription)
     {
         if (!result.IsSuccess)
         {
-            logger.LogWarning($"Die Operation '{operationDescription}' war nicht erfolgreich.");
+            logger.LogWarning("Die Operation '{OperationDescription}' war nicht erfolgreich.", operationDescription);
 
-            if (result.Errors.Any())
+            if (result.Errors.Count != 0)
             {
-                logger.LogWarning($"Fehler für '{operationDescription}':");
+                logger.LogWarning("Fehler für '{OperationDescription}':", operationDescription);
                 foreach (var error in result.Errors)
                 {
-                    logger.LogWarning($"- {error.Message}");
-                    if (error.Metadata.Any())
+                    logger.LogWarning("- {ErrorMessage}", error.Message);
+                    if (error.Metadata.Count != 0)
                     {
-                        logger.LogDebug($"  Metadaten: {string.Join(", ", error.Metadata.Select(kv => $"{kv.Key}={kv.Value}"))}");
+                        logger.LogDebug("  Metadaten: {Join}", string.Join(", ", error.Metadata.Select(kv => $"{kv.Key}={kv.Value}")));
                     }
                 }
             }
 
-            if (result.Reasons.Any())
+            if (result.Reasons.Count == 0) return;
             {
-                logger.LogDebug($"Zusätzliche Gründe für '{operationDescription}':");
+                logger.LogDebug("Zusätzliche Gründe für '{OperationDescription}':", operationDescription);
                 foreach (var reason in result.Reasons)
                 {
-                    logger.LogDebug($"- {reason.Message}");
-                    if (reason.Metadata.Any())
+                    logger.LogDebug("- {ReasonMessage}", reason.Message);
+                    if (reason.Metadata.Count != 0)
                     {
-                        logger.LogDebug($"  Metadaten: {string.Join(", ", reason.Metadata.Select(kv => $"{kv.Key}={kv.Value}"))}");
+                        logger.LogDebug("  Metadaten: {Join}", string.Join(", ", reason.Metadata.Select(kv => $"{kv.Key}={kv.Value}")));
                     }
                 }
             }
         }
         else
         {
-            logger.LogDebug($"Die Operation '{operationDescription}' war erfolgreich.");
+            logger.LogDebug("Die Operation '{OperationDescription}' war erfolgreich.", operationDescription);
         }
     }
 }

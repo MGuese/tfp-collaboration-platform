@@ -16,7 +16,7 @@ public class UnitOfWorkTest
     public void Setup()
     {
         DapperExtensions.DapperExtensions.SetMappingAssemblies([Assembly.GetExecutingAssembly()]);
-        Dapper.SqlMapper.AddTypeHandler(typeof(Guid), new GuidTypeHandler());
+        Dapper.SqlMapper.AddTypeHandler(new GuidTypeHandler());
     }
 
     [Test]
@@ -84,8 +84,8 @@ public class UnitOfWorkTest
     [Test]
     public async Task GetGallery()
     {
-        GalleryId galleryId = GalleryId.New();
-        OwnerId ownerId = OwnerId.New();
+        var galleryId = GalleryId.New();
+        var ownerId = OwnerId.New();
         // Arrange
         Gallery gallery = new()
         {
@@ -108,7 +108,7 @@ public class UnitOfWorkTest
         
         // Assert
         galleryDoResult.IsSuccess.ShouldBeTrue();
-        GalleryDo galleryDo = galleryDoResult.Value;
+        var galleryDo = galleryDoResult.Value;
         galleryDo.ShouldNotBeNull();
         galleryDo.Id.ShouldBe((GalleryId)gallery.Id);
         galleryDo.Name.ShouldBe(gallery.Name);
@@ -140,8 +140,8 @@ public class UnitOfWorkTest
     public async Task DeleteGallery()
     {
         // Arrange
-        GalleryId galleryId = GalleryId.New();
-        OwnerId ownerId = OwnerId.New();
+        var galleryId = GalleryId.New();
+        var ownerId = OwnerId.New();
         Gallery gallery = new()
         {
             Id = galleryId,

@@ -6,11 +6,9 @@ namespace tfp_collab_userspace_storage_database.Mapping;
 public static class GalleryMappingExtensions
 {
     // Mapping from ImageModel to ImageDto
-    public static GalleryDo? ToDo(this Gallery? model)
+    public static GalleryDo ToDo(this Gallery model)
     {
-        if (model == null) return null;
-
-        return new GalleryDo()
+        return new GalleryDo
         {
             Id = (GalleryId)model.Id, 
             Name = model.Name, 
@@ -20,11 +18,9 @@ public static class GalleryMappingExtensions
     }
 
     // Mapping from ImageDto to ImageModel
-    public static Gallery? ToModel(this GalleryDo? dto)
+    public static Gallery ToModel(this GalleryDo dto)
     {
-        if (dto == null) return null;
-
-        return new Gallery()
+        return new Gallery
         {
             Id = dto.Id, 
             Name = dto.Name, 

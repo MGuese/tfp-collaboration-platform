@@ -3,9 +3,9 @@ namespace tfp_collab_userspace_domain.DomainObjects;
 public readonly struct GalleryId 
     : IEquatable<GalleryId>
 {
-    public Guid Value { get; init; }
+    public Guid Value { get; }
 
-    public GalleryId(Guid value)
+    private GalleryId(Guid value)
     {
         Value = value;
     }

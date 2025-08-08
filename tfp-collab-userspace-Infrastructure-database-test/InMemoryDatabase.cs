@@ -12,8 +12,13 @@ public class InMemoryDatabase
     public InMemoryDatabase()
     {
         var connection = OpenConnection();
-            connection.ExecuteSql(
-                @"PRAGMA foreign_keys = ON;
+        CreateDbSchema(connection);
+    }
+
+    private static void CreateDbSchema(IDbConnection connection)
+    {
+        connection.ExecuteSql(
+            @"PRAGMA foreign_keys = ON;
                 CREATE TABLE Gallery 
                 (
                     Id BLOB PRIMARY KEY,
@@ -23,16 +28,15 @@ public class InMemoryDatabase
                     UNIQUE (OwnerId, Name)
                 );");
     }
-    
+
     public IDbConnection OpenConnection()
     {
-        return this._dbFactory.OpenDbConnection();
+        return _dbFactory.OpenDbConnection();
     }
     
     public void Insert<T>(IEnumerable<T> items)
     {
-        using var db = this.OpenConnection();
-        //db.CreateTableIfNotExists<T>();
+        using var db = OpenConnection();
         foreach (var item in items)
         {
             db.Insert(item);

@@ -3,9 +3,9 @@ namespace tfp_collab_userspace_domain.DomainObjects;
 public readonly struct OwnerId 
     : IEquatable<OwnerId>
 {
-    public Guid Value { get; init; }
+    public Guid Value { get; }
 
-    public OwnerId(Guid value)
+    private OwnerId(Guid value)
     {
         Value = value;
     }

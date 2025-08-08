@@ -52,7 +52,7 @@ public class CreateGalleryUseCaseTests
         // Verify that the output port was called with a successful response and the correct Id
         createGalleryResponse.IsSuccessul.ShouldBeTrue();
         createGalleryResponse.Id.ShouldBe(galleryDo.Id);
-        createGalleryResponse.ErrorMessage.ShouldBeNull();
+        createGalleryResponse.ErrorMessage.ShouldBeEmpty();
     }
 
     [Test]
@@ -64,7 +64,7 @@ public class CreateGalleryUseCaseTests
         mockUnitOfWork.GalleryRepository = mockGalleryRepository;
         var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
         var request = new CreateGalleryRequest { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
-        var expectedErrorMessage = "Database error occurred.";
+        const string expectedErrorMessage = "Database error occurred.";
         var databaseException = new Exception(expectedErrorMessage);
 
         // Setup the mock to throw an exception
@@ -95,8 +95,8 @@ public class CreateGalleryUseCaseTests
         var mockGalleryRepository = Substitute.For<IGalleryRepository>();
         mockUnitOfWork.GalleryRepository = mockGalleryRepository;
         var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
-        CreateGalleryRequest request = null; // Simulate a null request
-        var expectedErrorMessage = "Object reference not set to an instance of an object."; // Default exception message for null reference
+        CreateGalleryRequest request = null!; // Simulate a null request
+        const string expectedErrorMessage = "Object reference not set to an instance of an object."; // Default exception message for null reference
 
         var useCase = new CreateGalleryUseCase(mockUnitOfWork, logger);
 

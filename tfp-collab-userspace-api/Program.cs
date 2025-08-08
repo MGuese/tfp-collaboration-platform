@@ -1,8 +1,3 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using tfp_collab_userspace_api.Authorization;
 using tfp_collab_userspace_domain.Service;
 using tfp_collab_userspace_domain.UseCase;
@@ -20,7 +15,7 @@ if (string.IsNullOrEmpty(environmentName))
     Console.WriteLine("Umgebungsvariable ASPNETCORE_ENVIRONMENT/DOTNET_ENVIRONMENT nicht gefunden. Standard auf 'Development' gesetzt.");
 }
 
-var configurationBuilder = new ConfigurationBuilder()
+new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     // 2. Lade umgebungsspezifische Datei (z.B. appsettings.Development.json oder appsettings.Production.json)
     //    Diese Datei überschreibt bei Übereinstimmung Werte aus appsettings.json
@@ -46,6 +41,7 @@ builder.Services.AddScoped<IDbConnectionFactory>(provider =>
 {
     var configuration = provider.GetRequiredService<IConfiguration>();
     var connectionString = configuration.GetConnectionString("DefaultConnection");
+    if (string.IsNullOrEmpty(connectionString)) throw new InvalidOperationException("No connection string found.");
     return new PostgresDbConnectionFactory(connectionString);
 });
 //builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
@@ -117,7 +113,7 @@ builder.Services.AddControllers();
 
 // --- SWAGGER KONFIGURATION ---
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+builder.Services.AddSwaggerGen(_ =>
 {
     /*
     // Konfiguriere Swagger für JWT Bearer Token (nützlich für Produktion oder manuelle Tests)

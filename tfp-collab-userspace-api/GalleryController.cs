@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tfp_collab_userspace_api.Authorization;
 using tfp_collab_userspace_domain.Request;
@@ -16,7 +15,7 @@ public class GalleryController (ILogger<GalleryController> logger, ICurrentUserC
         [FromServices] ICreateGalleryUseCase createGalleryUseCase)
     {
         request.OwnerId = currentUserContext.GetCurrentOwnerId();
-        logger.LogDebug($"Received request for OwnerId: {request.OwnerId}, creating Gallery {request.Name}");
+        logger.LogDebug("Received request for OwnerId: {RequestOwnerId}, creating Gallery {RequestName}", request.OwnerId, request.Name);
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);

@@ -1,3 +1,4 @@
+/*
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
@@ -36,3 +37,4 @@ namespace tfp_collab_userspace_api.Authorization
         }
     }
 }
+*/

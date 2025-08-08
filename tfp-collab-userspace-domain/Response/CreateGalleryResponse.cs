@@ -10,6 +10,7 @@ public class CreateGalleryResponse
     {
         Id = id;
         IsSuccessul = true;
+        ErrorMessage = string.Empty;
     }
 
     public CreateGalleryResponse(string failure)

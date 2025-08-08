@@ -17,7 +17,7 @@ public class GetAllGalleriesResponse
 
     public GetAllGalleriesResponse(string errorMessage)
     {
-        Galleries = Array.Empty<GalleryDo>();
+        Galleries = [];
         IsSuccessful = false;
         ErrorMessage = errorMessage;
     }

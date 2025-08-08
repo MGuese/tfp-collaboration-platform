@@ -20,9 +20,9 @@ public class UnitOfWork
     public IGalleryRepository GalleryRepository { get; set; }
     public Task SaveAsync()
     {
-        _dbTransaction.Commit();
+        _dbTransaction?.Commit();
         _logger.LogDebug("Saving changes to Database");
-        _dbTransaction.Connection?.Close();
+        _dbTransaction?.Connection?.Close();
         _logger.LogDebug("connection closed");
         _dbTransaction = null;
         return Task.CompletedTask;

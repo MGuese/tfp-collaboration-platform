@@ -29,15 +29,12 @@ public class CreateGalleryUseCase
             };
             var createResult = await _unitOfWork.GalleryRepository.CreateAsync(newGallery);
             await _unitOfWork.SaveAsync();
-            if (createResult.IsFailed)
-            {
-                var errorMessages = createResult.Errors.Select(e => e.Message);
-                // Verknüpfe alle Nachrichten mit einem Zeilenumbruch
-                var allErrorsAsString = string.Join(Environment.NewLine, errorMessages);
-                return new CreateGalleryResponse(allErrorsAsString);
-            }
-                
-            return new CreateGalleryResponse(createResult.Value.Id);
+            if (!createResult.IsFailed) return new CreateGalleryResponse(createResult.Value.Id);
+            var errorMessages = createResult.Errors.Select(e => e.Message);
+            // Verknüpfe alle Nachrichten mit einem Zeilenumbruch
+            var allErrorsAsString = string.Join(Environment.NewLine, errorMessages);
+            return new CreateGalleryResponse(allErrorsAsString);
+
         }
         catch (Exception ex)
         {

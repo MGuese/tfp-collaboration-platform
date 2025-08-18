@@ -113,4 +113,28 @@ public class CreateGalleryUseCaseTests
         createGalleryResponse.ErrorMessage.ShouldStartWith("Error creating gallery:");
         createGalleryResponse.ErrorMessage.ShouldContain(expectedErrorMessage);
     }
+    
+    [Test]
+    public async Task Handle_NullRequest_RepositoryCreateGalleryReturnsResultFailed()
+    {
+        // Arrange
+        var mockUnitOfWork = Substitute.For<IUnitOfWork>();
+        var mockGalleryRepository = Substitute.For<IGalleryRepository>();
+        mockUnitOfWork.GalleryRepository = mockGalleryRepository;
+        mockGalleryRepository
+            .CreateAsync(Arg.Any<GalleryDo>())
+            .Returns(Task.FromResult(Result.Fail<GalleryDo>(["Unique Key Exception."])));
+        var logger = Substitute.For<ILogger<CreateGalleryUseCase>>();
+        CreateGalleryRequest request = new () { Name = "Test Gallery", OwnerId = Guid.NewGuid() };
+
+        var useCase = new CreateGalleryUseCase(mockUnitOfWork, logger);
+
+        // Act
+        var createGalleryResponse = await useCase.Handle(request);
+
+        // Assert
+        createGalleryResponse.IsSuccessul.ShouldBeFalse();
+        createGalleryResponse.Id.ShouldBe(Guid.Empty);
+        createGalleryResponse.ErrorMessage.ShouldStartWith("Unique Key Exception.");
+    }
 }

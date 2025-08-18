@@ -8,14 +8,13 @@ namespace tfp_collab_userspace_api;
 [ApiController]
 [Route("api/[controller]")]
 //[Authorize]
-public class GalleryController ()
+public class GalleryController(ILogger<GalleryController> logger)
     : ControllerBase
 {
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(
         [FromBody] CreateGalleryRequest request, 
         [FromServices] ICreateGalleryUseCase createGalleryUseCase,
-        [FromServices] ILogger<GalleryController> logger, 
         [FromServices] ICurrentUserContext currentUserContext)
     {
         request.OwnerId = currentUserContext.GetCurrentOwnerId();

@@ -1,7 +1,7 @@
 using System.Data;
 using Dapper;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfpcollab.userspace.infrastructure.database;
 
 public class GuidTypeHandler : SqlMapper.TypeHandler<Guid>
 {

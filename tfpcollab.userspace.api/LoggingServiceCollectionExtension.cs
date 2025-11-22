@@ -1,11 +1,11 @@
-using tfp_collab_userspace_api.Authorization;
-using tfp_collab_userspace_domain.Service;
-using tfp_collab_userspace_domain.UseCase;
-using tfp_collab_userspace_storage_database;
-using tfp_collab_userspace_storage_database.Initialize;
-using tfp_collab_userspace_storage_database.Repositories;
+using tfpcollab.userspace.api.Authorization;
+using tfpcollab.userspace.domain.Service;
+using tfpcollab.userspace.domain.UseCase;
+using tfpcollab.userspace.infrastructure.database;
+using tfpcollab.userspace.infrastructure.database.Initialize;
+using tfpcollab.userspace.infrastructure.database.Repositories;
 
-namespace tfp_collab_userspace_api;
+namespace tfpcollab.userspace.api;
 
 public static class LoggingServiceCollectionExtensions
 {

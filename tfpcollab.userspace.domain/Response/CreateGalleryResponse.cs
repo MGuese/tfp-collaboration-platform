@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_domain.Response;
+namespace tfpcollab.userspace.domain.Response;
 
 public class CreateGalleryResponse
 {

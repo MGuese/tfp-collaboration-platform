@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace tfp_collab_userspace_domain.Request;
+namespace tfpcollab.userspace.domain.Request;
 
 public class CreateGalleryRequest : ICreateGalleryRequest
 {

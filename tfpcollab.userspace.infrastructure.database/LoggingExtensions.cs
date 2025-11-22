@@ -1,7 +1,7 @@
 using FluentResults;
 using Microsoft.Extensions.Logging;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfpcollab.userspace.infrastructure.database;
 
 public static class LoggingExtensions
 {

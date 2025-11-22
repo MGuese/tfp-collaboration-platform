@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_storage_database.Model;
+namespace tfpcollab.userspace.infrastructure.database.Model;
 
 public class Gallery
 {

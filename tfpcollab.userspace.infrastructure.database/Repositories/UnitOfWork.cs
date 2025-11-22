@@ -1,8 +1,8 @@
 using System.Data;
 using Microsoft.Extensions.Logging;
-using tfp_collab_userspace_domain.Service;
+using tfpcollab.userspace.domain.Service;
 
-namespace tfp_collab_userspace_storage_database.Repositories;
+namespace tfpcollab.userspace.infrastructure.database.Repositories;
 
 public class UnitOfWork
     : IUnitOfWork

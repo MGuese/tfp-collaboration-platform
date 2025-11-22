@@ -1,7 +1,7 @@
-using tfp_collab_userspace_domain.DomainObjects;
-using tfp_collab_userspace_storage_database.Model;
+using tfpcollab.userspace.domain.DomainObjects;
+using tfpcollab.userspace.infrastructure.database.Model;
 
-namespace tfp_collab_userspace_storage_database.Mapping;
+namespace tfpcollab.userspace.infrastructure.database.Mapping;
 
 public static class GalleryMappingExtensions
 {

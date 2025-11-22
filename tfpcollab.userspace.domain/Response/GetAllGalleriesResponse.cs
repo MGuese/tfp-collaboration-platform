@@ -1,6 +1,6 @@
-using tfp_collab_userspace_domain.DomainObjects;
+using tfpcollab.userspace.domain.DomainObjects;
 
-namespace tfp_collab_userspace_domain.Response;
+namespace tfpcollab.userspace.domain.Response;
 
 public class GetAllGalleriesResponse
 {

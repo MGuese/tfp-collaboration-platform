@@ -2,13 +2,13 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Shouldly;
-using tfp_collab_userspace_domain.DomainObjects;
-using tfp_collab_userspace_domain.Service;
-using tfp_collab_userspace_storage_database;
-using tfp_collab_userspace_storage_database.Model;
-using tfp_collab_userspace_storage_database.Repositories;
+using tfpcollab.userspace.domain.DomainObjects;
+using tfpcollab.userspace.domain.Service;
+using tfpcollab.userspace.infrastructure.database;
+using tfpcollab.userspace.infrastructure.database.Model;
+using tfpcollab.userspace.infrastructure.database.Repositories;
 
-namespace tfp_collab_userspace_storage_database_test;
+namespace tfpcollab.userspace.Infrastructure.database.test;
 
 public class UnitOfWorkTest
 {

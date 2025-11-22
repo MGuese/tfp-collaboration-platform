@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using tfp_collab_userspace_api.Authorization;
-using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.UseCase;
+using tfpcollab.userspace.api.Authorization;
+using tfpcollab.userspace.domain.Request;
+using tfpcollab.userspace.domain.UseCase;
 
-namespace tfp_collab_userspace_api;
+namespace tfpcollab.userspace.api;
 
 [ApiController]
 [Route("api/[controller]")]

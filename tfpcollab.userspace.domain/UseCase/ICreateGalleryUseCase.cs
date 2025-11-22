@@ -1,7 +1,7 @@
-using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.Response;
+using tfpcollab.userspace.domain.Request;
+using tfpcollab.userspace.domain.Response;
 
-namespace tfp_collab_userspace_domain.UseCase;
+namespace tfpcollab.userspace.domain.UseCase;
 
 public interface ICreateGalleryUseCase
 {

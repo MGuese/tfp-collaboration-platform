@@ -1,12 +1,12 @@
 using System.Data;
 using Dapper;
 using FluentResults;
-using tfp_collab_userspace_domain.DomainObjects;
-using tfp_collab_userspace_domain.Service;
-using tfp_collab_userspace_storage_database.Mapping;
-using tfp_collab_userspace_storage_database.Model;
+using tfpcollab.userspace.domain.DomainObjects;
+using tfpcollab.userspace.domain.Service;
+using tfpcollab.userspace.infrastructure.database.Model;
+using tfpcollab.userspace.infrastructure.database.Mapping;
 
-namespace tfp_collab_userspace_storage_database.Repositories;
+namespace tfpcollab.userspace.infrastructure.database.Repositories;
 
 public class GalleryRepository
     : IGalleryRepository

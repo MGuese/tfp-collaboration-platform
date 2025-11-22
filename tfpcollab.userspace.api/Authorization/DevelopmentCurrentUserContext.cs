@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_api.Authorization;
+namespace tfpcollab.userspace.api.Authorization;
 
 public class DevelopmentCurrentUserContext : ICurrentUserContext
 {

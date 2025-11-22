@@ -1,6 +1,6 @@
-using tfp_collab_userspace_storage_database.Initialize;
+using tfpcollab.userspace.infrastructure.database.Initialize;
 
-namespace tfp_collab_userspace_api;
+namespace tfpcollab.userspace.api;
 
 public static class HostExtensions
 {

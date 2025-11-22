@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_domain.DomainObjects;
+namespace tfpcollab.userspace.domain.DomainObjects;
 
 public readonly struct GalleryId 
     : IEquatable<GalleryId>

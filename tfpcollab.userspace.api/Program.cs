@@ -1,6 +1,7 @@
-using tfp_collab_userspace_api;
+using tfpcollab.userspace.api;
+using ConfigurationExtensions = tfpcollab.userspace.api.ConfigurationExtensions;
 
-var configuration = tfp_collab_userspace_api.ConfigurationExtensions.BuildConfiguration();
+var configuration = ConfigurationExtensions.BuildConfiguration();
 var builder = WebApplication.CreateBuilder();
 builder.Configuration.AddConfiguration(configuration);
 builder.Services.AddCustomLogging(configuration);

@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_storage_database.Initialize;
+namespace tfpcollab.userspace.infrastructure.database.Initialize;
 
 public interface IDatabaseInitializer
 {

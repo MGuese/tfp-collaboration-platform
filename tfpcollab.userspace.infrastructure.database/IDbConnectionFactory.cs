@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfpcollab.userspace.infrastructure.database;
 
 public interface IDbConnectionFactory
 {

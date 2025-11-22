@@ -1,7 +1,7 @@
 using FluentResults;
-using tfp_collab_userspace_domain.DomainObjects;
+using tfpcollab.userspace.domain.DomainObjects;
 
-namespace tfp_collab_userspace_domain.Service;
+namespace tfpcollab.userspace.domain.Service;
 
 public interface IGalleryRepository
 {

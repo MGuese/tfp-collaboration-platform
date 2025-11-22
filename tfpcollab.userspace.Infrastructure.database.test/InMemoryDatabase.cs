@@ -2,7 +2,7 @@ using System.Data;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.Sqlite;
 
-namespace tfp_collab_userspace_storage_database_test;
+namespace tfpcollab.userspace.Infrastructure.database.test;
 
 public class InMemoryDatabase
 {

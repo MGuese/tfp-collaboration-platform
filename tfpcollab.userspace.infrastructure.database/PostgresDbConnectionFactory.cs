@@ -1,7 +1,7 @@
 using System.Data;
 using Npgsql;
 
-namespace tfp_collab_userspace_storage_database;
+namespace tfpcollab.userspace.infrastructure.database;
 
 public class PostgresDbConnectionFactory
     : IDbConnectionFactory

@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_api;
+namespace tfpcollab.userspace.api;
 
 public static class ConfigurationExtensions
 {

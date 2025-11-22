@@ -1,14 +1,14 @@
+using FluentResults;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
-using Shouldly;
-using FluentResults;
 using NSubstitute.ExceptionExtensions;
-using tfp_collab_userspace_domain.DomainObjects;
-using tfp_collab_userspace_domain.Request;
-using tfp_collab_userspace_domain.UseCase;
-using tfp_collab_userspace_domain.Service;
+using Shouldly;
+using tfpcollab.userspace.domain.DomainObjects;
+using tfpcollab.userspace.domain.Request;
+using tfpcollab.userspace.domain.Service;
+using tfpcollab.userspace.domain.UseCase;
 
-namespace tfp_collab_userspace_domain_test;
+namespace tfpcollab.userspace.domain.test;
 
 [TestFixture]
 public class CreateGalleryUseCaseTests

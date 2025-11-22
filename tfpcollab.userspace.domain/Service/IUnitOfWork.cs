@@ -1,4 +1,4 @@
-namespace tfp_collab_userspace_domain.Service;
+namespace tfpcollab.userspace.domain.Service;
 
 public interface IUnitOfWork
     : IDisposable

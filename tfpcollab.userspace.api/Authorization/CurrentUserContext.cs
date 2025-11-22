@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace tfp_collab_userspace_api.Authorization
+namespace tfpcollab.userspace.api.Authorization
 {
     public class CurrentUserContext : ICurrentUserContext
     {

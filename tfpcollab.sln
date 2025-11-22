@@ -2,15 +2,15 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{098C6B84-27C5-42FC-A0AF-797BDA8F4A09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-infrastructure-database", "tfp-collab-userspace-infrastructure-database\tfp-collab-userspace-infrastructure-database.csproj", "{36111C55-4953-441E-B9D7-2021E752C6D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfpcollab.userspace.infrastructure.database", "tfpcollab.userspace.infrastructure.database\tfpcollab.userspace.infrastructure.database.csproj", "{36111C55-4953-441E-B9D7-2021E752C6D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-domain", "tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj", "{F52A731B-C8D4-4582-B804-5A174E8BECFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfpcollab.userspace.domain", "tfpcollab.userspace.domain\tfpcollab.userspace.domain.csproj", "{F52A731B-C8D4-4582-B804-5A174E8BECFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-api", "tfp-collab-userspace-api\tfp-collab-userspace-api.csproj", "{15AA86A1-1986-401B-B0DA-1D548A3D0029}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfpcollab.userspace.api", "tfpcollab.userspace.api\tfpcollab.userspace.api.csproj", "{15AA86A1-1986-401B-B0DA-1D548A3D0029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-Infrastructure-database-test", "tfp-collab-userspace-Infrastructure-database-test\tfp-collab-userspace-Infrastructure-database-test.csproj", "{EF70042D-C92E-4516-B7BB-24FF0CF8DBBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfpcollab.userspace.Infrastructure.database.test", "tfpcollab.userspace.Infrastructure.database.test\tfpcollab.userspace.Infrastructure.database.test.csproj", "{EF70042D-C92E-4516-B7BB-24FF0CF8DBBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfp-collab-userspace-domain-test", "tfp-collab-userspace-domain-test\tfp-collab-userspace-domain-test.csproj", "{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfpcollab.userspace.domain.test", "tfpcollab.userspace.domain.test\tfpcollab.userspace.domain.test.csproj", "{C6B7FB60-43B3-493F-B908-C5D91FCDA45D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

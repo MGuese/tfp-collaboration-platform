@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>tfp_collab_userspace_storage_database</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -14,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj" />
+      <ProjectReference Include="..\tfpcollab.userspace.domain\tfpcollab.userspace.domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>

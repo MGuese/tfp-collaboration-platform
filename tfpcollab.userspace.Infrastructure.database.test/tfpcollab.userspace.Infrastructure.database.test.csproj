@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>tfp_collab_userspace_domain_test</RootNamespace>
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -14,6 +13,9 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="DapperExtensions" Version="1.7.0" />
+        <PackageReference Include="FluentResults" Version="3.16.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
         <PackageReference Include="NUnit" Version="4.3.2" />
@@ -22,7 +24,10 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+        <PackageReference Include="ServiceStack.OrmLite" Version="8.8.0" />
+        <PackageReference Include="ServiceStack.OrmLite.Sqlite.Core" Version="8.8.0" />
         <PackageReference Include="Shouldly" Version="4.3.0" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,8 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\tfp-collab-userspace-domain\tfp-collab-userspace-domain.csproj" />
-      <ProjectReference Include="..\tfp-collab-userspace-infrastructure-database\tfp-collab-userspace-infrastructure-database.csproj" />
+      <ProjectReference Include="..\tfpcollab.userspace.infrastructure.database\tfpcollab.userspace.infrastructure.database.csproj" />
     </ItemGroup>
 
 </Project>

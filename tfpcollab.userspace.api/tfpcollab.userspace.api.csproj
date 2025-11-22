@@ -4,7 +4,6 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>tfp_collab_userspace_api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\tfp-collab-userspace-infrastructure-database\tfp-collab-userspace-infrastructure-database.csproj" />
+      <ProjectReference Include="..\tfpcollab.userspace.infrastructure.database\tfpcollab.userspace.infrastructure.database.csproj" />
     </ItemGroup>
 
 </Project>

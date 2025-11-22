@@ -13,15 +13,13 @@ public class GalleryRepository
 {
     private readonly IDbTransaction _transaction;
 
-    public GalleryRepository(IDbTransaction connection)
+    public GalleryRepository(IDbTransaction transaction)
     {
-        _transaction = connection;
+        _transaction = transaction;
     }
 
     public async Task<Result<GalleryDo>> GetAsync(OwnerId ownerId, GalleryId galleryId)
     {
-        if (_transaction.Connection is null) throw new InvalidOperationException("Connection is null.");
-        
         try
         {
             var gallery = 
@@ -39,13 +37,12 @@ public class GalleryRepository
     
     public async Task<Result<IEnumerable<GalleryDo>>> GetAsync(OwnerId ownerId)
     {
-        if (_transaction.Connection is null) throw new InvalidOperationException("Connection is null.");
-        
         try
         {
             var galleries = 
                 await _transaction.Connection
-                    .QueryAsync<Gallery>("SELECT * FROM Gallery WHERE OwnerId = @ownerId and");
+                    .QueryAsync<Gallery>("SELECT * FROM Gallery WHERE OwnerId = @OwnerId",
+                        new { OwnerId = ownerId.Value });
             
             return !galleries.Any() ? Result.Fail("Galleries cannot be selected.") : Result.Ok(galleries.Select(g => g.ToDo()));
         }
@@ -57,7 +54,6 @@ public class GalleryRepository
 
     public async Task<Result<GalleryDo>> CreateAsync(GalleryDo galleryDo)
     {
-        if (_transaction.Connection is null) throw new InvalidOperationException("Connection is null.");
         try
         {
             var gallery = galleryDo.ToModel();
@@ -81,8 +77,6 @@ public class GalleryRepository
 
     public async Task<Result> DeleteAsync(GalleryId id)
     {
-        if (_transaction.Connection is null) throw new InvalidOperationException("Connection is null.");
-        
         try
         {
             var rowsDeleted = 

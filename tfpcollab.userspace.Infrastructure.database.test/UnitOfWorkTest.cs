@@ -82,7 +82,7 @@ public class UnitOfWorkTest
     }
     
     [Test]
-    public async Task GetGallery()
+    public async Task GetGalleryByOwnerIdAndGalleryId()
     {
         var galleryId = GalleryId.New();
         var ownerId = OwnerId.New();
@@ -109,6 +109,41 @@ public class UnitOfWorkTest
         // Assert
         galleryDoResult.IsSuccess.ShouldBeTrue();
         var galleryDo = galleryDoResult.Value;
+        galleryDo.ShouldNotBeNull();
+        galleryDo.Id.ShouldBe((GalleryId)gallery.Id);
+        galleryDo.Name.ShouldBe(gallery.Name);
+        galleryDo.OwnerId.ShouldBe((OwnerId)gallery.OwnerId);
+        galleryDo.AddedOn.ShouldBe(gallery.AddedOn);
+    }
+    
+    [Test]
+    public async Task GetGallery()
+    {
+        var galleryId = GalleryId.New();
+        var ownerId = OwnerId.New();
+        // Arrange
+        Gallery gallery = new()
+        {
+            Id = galleryId,
+            Name = "Meine erste Gallery",
+            OwnerId = ownerId,
+            AddedOn = DateTime.UtcNow
+        };
+        var db = new InMemoryDatabase();
+        db.Insert<Gallery>([gallery]);
+        var connectionFactoryMock = Substitute.For<IDbConnectionFactory>();
+        var logging = Substitute.For<ILogger<IUnitOfWork>>();
+        using var connection = db.OpenConnection();
+        connectionFactoryMock.CreateConnection().Returns(connection);
+        using UnitOfWork uof = new (connectionFactoryMock, logging);
+        
+        // Act
+        var galleryDoResult = await uof.GalleryRepository.GetAsync(ownerId);
+        await uof.SaveAsync();
+        
+        // Assert
+        galleryDoResult.IsSuccess.ShouldBeTrue();
+        var galleryDo = galleryDoResult.Value.FirstOrDefault();
         galleryDo.ShouldNotBeNull();
         galleryDo.Id.ShouldBe((GalleryId)gallery.Id);
         galleryDo.Name.ShouldBe(gallery.Name);
